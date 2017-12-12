@@ -29,6 +29,8 @@ public class MainActivity extends BaseWeareableActivity implements
 
     private InputBox inputBox;
     private RegistroPesoPresenter presenter;
+    private Calendar c=Calendar.getInstance();
+
 
     @BindView(R.id.bubbleCalendar)
     BubbleLayout bubbleCalendar;
@@ -38,6 +40,7 @@ public class MainActivity extends BaseWeareableActivity implements
     PesoPicker pesoPicker;
     @BindView(R.id.btnRegistrar)
     Button btnRegistrar;
+    private DatePickerDialog datePickerDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +55,14 @@ public class MainActivity extends BaseWeareableActivity implements
         inputBox=new InputBox(this);
         inputBox.setTitle("Ingresar nota");
         inputBox.setErrorText("Por favor ingresa una nota");
+        datePickerDialog=new DatePickerDialog(this,this, c.get(Calendar.YEAR),c.get(Calendar.MONTH),c.get(Calendar.DAY_OF_MONTH));
     }
 
     @Override
     public void setPresenter() {
         this.presenter=new RegistroPesoPresenterImpl();
         this.presenter.register(this);
+        this.presenter.setFecha(c);
     }
 
     @Override
@@ -72,9 +77,9 @@ public class MainActivity extends BaseWeareableActivity implements
 
     @OnClick(R.id.bubbleCalendar)
     public void initCalendar(){
-        Calendar c=Calendar.getInstance();
-        DatePickerDialog datePickerDialog=new DatePickerDialog(this,this, c.get(Calendar.YEAR),c.get(Calendar.MONTH),c.get(Calendar.DAY_OF_MONTH));
-        datePickerDialog.show();
+        if(!datePickerDialog.isShowing()) {
+            datePickerDialog.show();
+        }
     }
 
 
@@ -113,8 +118,6 @@ public class MainActivity extends BaseWeareableActivity implements
 
     @Override
     public void setFechaValue(String value) {
-        if(!value.isEmpty()){
-            bubbleNotas.setText(value);
-        }
+            bubbleCalendar.setText(value);
     }
 }

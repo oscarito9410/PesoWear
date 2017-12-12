@@ -19,7 +19,6 @@ public class BubbleLayout extends RelativeLayout {
     private Drawable icon;
     private String text;
     private TextView tvTitulo;
-    private ImageView imgBubble;
 
     public BubbleLayout(Context context) {
         super(context);
@@ -37,7 +36,7 @@ public class BubbleLayout extends RelativeLayout {
     }
 
 
-    public void  inflateLayouts(Context context, AttributeSet attrs) {
+    private void  inflateLayouts(Context context, AttributeSet attrs) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         layoutInflater.inflate(R.layout.bubble_layout, this);
         if(attrs!=null) {
@@ -50,7 +49,7 @@ public class BubbleLayout extends RelativeLayout {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        imgBubble=(ImageView)findViewById(R.id.imgBubble);
+        ImageView imgBubble = (ImageView) findViewById(R.id.imgBubble);
         tvTitulo=(TextView)findViewById(R.id.tvBubble);
         if(getIcon()!=null){
             imgBubble.setImageDrawable(getIcon());

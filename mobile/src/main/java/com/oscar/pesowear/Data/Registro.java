@@ -21,7 +21,7 @@ public class Registro extends BaseModel {
     @NotNull
     double peso;
 
-    @Column
+    @Column(name = "fecha")
     @NotNull
     Date fecha;
 

@@ -32,6 +32,7 @@ public class RegistroPesoPresenterImpl extends BasePresenterImpl implements Regi
     @Override
     public void register(BaseView view) {
         super.register(view);
+        this.view=(RegistroView)view;
         interactor=new DataBaseInteractor();
     }
 
@@ -59,7 +60,7 @@ public class RegistroPesoPresenterImpl extends BasePresenterImpl implements Regi
        this.selectedFecha=Calendar.getInstance();
        this.selectedFecha.set(year,month,dayOfMonth);
        this.fechaString = dateFormat.format(selectedFecha.getTime());
-        view.setFechaValue(this.fechaString);
+       this.view.setFechaValue(this.fechaString);
     }
 
     public interface RegistroView extends BaseView
