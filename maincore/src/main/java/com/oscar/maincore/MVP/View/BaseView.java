@@ -4,5 +4,6 @@ import android.app.Activity;
 public interface BaseView {
     void initView();
     void setPresenter();
+    void setListeners();
     Activity getActivityInstance();
 }

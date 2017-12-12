@@ -25,6 +25,7 @@ public class BasePresenterImpl implements BasePresenter {
     public void register(BaseView view) {
         this.view=view;
         this.view.initView();
+        this.view.setListeners();
     }
 
     @Override

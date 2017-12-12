@@ -1,4 +1,4 @@
-package com.oscar.pesowear.View;
+package com.oscar.pesowear.View.Base;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

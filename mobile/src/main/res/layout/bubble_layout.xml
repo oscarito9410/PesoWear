@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/rlBubble"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/shape_oval"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="20dp">
+        <ImageView
+            android:id="@+id/imgBubble"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/ic_calendar"/>
+        <TextView
+            android:layout_toRightOf="@id/imgBubble"
+            android:id="@+id/tvBubble"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="01/Septiembre/2017"
+            android:textSize="16dp"
+            android:textColor="@android:color/white"
+            android:layout_centerInParent="true"/>
+
+</RelativeLayout>

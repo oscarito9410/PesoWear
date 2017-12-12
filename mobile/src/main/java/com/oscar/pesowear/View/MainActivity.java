@@ -1,54 +1,120 @@
 package com.oscar.pesowear.View;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.annotation.StringRes;
+import android.text.TextUtils;
+import android.widget.Button;
+import android.widget.DatePicker;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.wearable.MessageApi;
-import com.google.android.gms.wearable.Node;
-import com.google.android.gms.wearable.NodeApi;
-import com.google.android.gms.wearable.Wearable;
-import com.oscar.maincore.Utils.Constants;
-import com.oscar.maincore.Data.RegistroCore;
-import com.oscar.maincore.Utils.Utilerias;
-import com.oscar.pesowear.Data.Registro;
+import com.oscar.pesowear.Presenter.RegistroPesoPresenter;
+import com.oscar.pesowear.Presenter.RegistroPesoPresenterImpl;
 import com.oscar.pesowear.R;
-import com.raizlabs.android.dbflow.sql.language.SQLite;
+import com.oscar.pesowear.View.Base.BaseWeareableActivity;
+import com.oscar.pesowear.View.Controls.BubbleLayout;
+import com.oscar.pesowear.View.Controls.InputBox;
+import com.oscar.pesowear.View.Controls.PesoPicker;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.Calendar;
 
-public class MainActivity extends BaseWeareableActivity{
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+public class MainActivity extends BaseWeareableActivity implements
+        RegistroPesoPresenterImpl.RegistroView,
+        DatePickerDialog.OnDateSetListener,
+        InputBox.inputBoxCallBack {
+
+    private InputBox inputBox;
+    private RegistroPesoPresenter presenter;
+
+    @BindView(R.id.bubbleCalendar)
+    BubbleLayout bubbleCalendar;
+    @BindView(R.id.bubbleNotas)
+    BubbleLayout bubbleNotas;
+    @BindView(R.id.pesoPicker)
+    PesoPicker pesoPicker;
+    @BindView(R.id.btnRegistrar)
+    Button btnRegistrar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setPresenter();
+    }
 
+    @Override
+    public void initView(){
+        ButterKnife.bind(this);
+        inputBox=new InputBox(this);
+        inputBox.setTitle("Ingresar nota");
+        inputBox.setErrorText("Por favor ingresa una nota");
+    }
 
+    @Override
+    public void setPresenter() {
+        this.presenter=new RegistroPesoPresenterImpl();
+        this.presenter.register(this);
+    }
 
+    @Override
+    public void setListeners() {
+        inputBox.setCallBack(this);
+    }
 
-/*        for(int j=0;j<100;j++) {
-            Registro registro = new Registro();
-            registro.setPeso(100);
-            registro.setFecha(new Date());
-            registro.setNotas("Prueba");
-            registro.save();
+    @Override
+    public Activity getActivityInstance() {
+        return this;
+    }
 
-        }
-
-        List<Registro> registros = SQLite.select().from(Registro.class).queryList();
-
-        for (Registro r: registros){
-            Log.d(TAG, "onCreate:"+r.getNotas());
-        }*/
-
+    @OnClick(R.id.bubbleCalendar)
+    public void initCalendar(){
+        Calendar c=Calendar.getInstance();
+        DatePickerDialog datePickerDialog=new DatePickerDialog(this,this, c.get(Calendar.YEAR),c.get(Calendar.MONTH),c.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
     }
 
 
+    @OnClick(R.id.bubbleNotas)
+    public void initNotas(){
+        inputBox.showAsync();
+    }
+    @OnClick(R.id.btnRegistrar)
+    public void initRegistro(){
+        presenter.agregarPeso(pesoPicker.getPeso(),bubbleNotas.getText());
+    }
+
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth){
+        presenter.setFecha(year,month,dayOfMonth);
+    }
+
+    @Override
+    public void OnResult(String result) {
+        if(!TextUtils.isEmpty(result)){
+            bubbleNotas.setText(result);
+            inputBox.setTextDefault(result);
+        }
+    }
+
+    @Override
+    public void OnCancel() {
+
+    }
+
+    @Override
+    public void setErrorFecha(@StringRes  int error) {
+
+    }
+
+    @Override
+    public void setFechaValue(String value) {
+        if(!value.isEmpty()){
+            bubbleNotas.setText(value);
+        }
+    }
 }

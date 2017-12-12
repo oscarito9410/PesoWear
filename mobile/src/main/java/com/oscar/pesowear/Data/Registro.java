@@ -27,10 +27,10 @@ public class Registro extends BaseModel {
 
     @Column
     String notas;
-
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -51,6 +51,23 @@ public class Registro extends BaseModel {
     }
     public void setNotas(String notas) {
         this.notas = notas;
+    }
+
+    public Registro(){
+
+    }
+
+    public Registro(double peso, Date fecha, String notas) {
+        this.peso = peso;
+        this.fecha = fecha;
+        this.notas = notas;
+    }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        Registro r=(Registro)obj;
+        return r.getId()==getId();
     }
 
     public RegistroCore toCoreElement(){

@@ -7,85 +7,38 @@
     tools:context="com.oscar.pesowear.View.MainActivity">
 
 
-    <RelativeLayout
-        android:id="@+id/rlCalendarInicio"
+    <com.oscar.pesowear.View.Controls.BubbleLayout
+        android:id="@+id/bubbleCalendar"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@android:color/black"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="20dp">
-
-        <TextView
-            android:id="@+id/tvCalendarInicio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="01/Septiembre/2017"
-            android:textSize="16dp"
-            android:textColor="@android:color/white"
-            android:layout_centerInParent="true"/>
-
-    </RelativeLayout>
-
-
-
-    <LinearLayout
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_centerInParent="true">
-
-        <com.shawnlin.numberpicker.NumberPicker
-            android:id="@+id/numberPrim"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            app:np_width="64dp"
-            app:np_height="180dp"
-            app:np_dividerColor="@color/colorPrimary"
-            app:np_max="200"
-            app:np_min="0"
-            app:np_value="1"
-            android:layout_marginRight="10dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="."
-            android:textSize="60sp"
-            android:gravity="center"
-            android:layout_marginTop="-20dp"
-            android:textColor="@color/colorPrimary"/>
-
-        <com.shawnlin.numberpicker.NumberPicker
-            android:id="@+id/numberSec"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            app:np_width="64dp"
-            app:np_height="180dp"
-            app:np_dividerColor="@color/colorPrimary"
-            app:np_max="9"
-            app:np_min="0"
-            app:np_value="1"
-            android:layout_marginRight="10dp"/>
+        app:icono="@drawable/ic_calendar"
+        app:text="Fecha de día de hoy" />
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Kg"
-            android:textSize="25sp"
-            android:gravity="center"
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/colorPrimary"/>
-
-    </LinearLayout>
+    <com.oscar.pesowear.View.Controls.BubbleLayout
+        android:id="@+id/bubbleNotas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bubbleCalendar"
+        android:layout_marginTop="10dp"
+        app:icono="@drawable/ic_note"
+        app:text="Notas" />
 
 
+    <com.oscar.pesowear.View.Controls.PesoPicker
+        android:id="@+id/pesoPicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bubbleNotas"
+        android:layout_marginTop="20dp" />
 
 
-
+    <Button
+        android:id="@+id/btnRegistrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pesoPicker"
+        android:text="Registar peso" />
 
 
 </RelativeLayout>
