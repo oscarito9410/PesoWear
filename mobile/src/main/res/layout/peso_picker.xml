@@ -8,7 +8,7 @@
 
     <com.shawnlin.numberpicker.NumberPicker
         android:id="@+id/numberPrim"
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_marginRight="10dp"
@@ -30,7 +30,7 @@
 
     <com.shawnlin.numberpicker.NumberPicker
         android:id="@+id/numberSec"
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_marginRight="10dp"

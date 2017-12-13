@@ -48,6 +48,14 @@ public class PesoPicker extends LinearLayout {
         return Double.parseDouble(getFormatNumber(numberPrim.getValue(),numberSec.getValue()));
     }
 
+    public void setPeso(double peso){
+        String[] pesoString=String.valueOf(peso).split("\\.");
+        if(pesoString.length>0){
+            numberPrim.setValue(Integer.valueOf(pesoString[0]));
+            numberSec.setValue(Integer.valueOf(pesoString[1]));
+        }
+    }
+
     public String getFormatNumber(int numeroPrimero,int numeroSecundario){
         return String.format("%s.%s",numeroPrimero, numeroSecundario);
     }

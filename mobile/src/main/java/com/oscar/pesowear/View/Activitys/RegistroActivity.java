@@ -1,13 +1,14 @@
-package com.oscar.pesowear.View;
-
+package com.oscar.pesowear.View.Activitys;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.DatePicker;
-
 import com.oscar.pesowear.Presenter.RegistroPesoPresenter;
 import com.oscar.pesowear.Presenter.RegistroPesoPresenterImpl;
 import com.oscar.pesowear.R;
@@ -15,14 +16,12 @@ import com.oscar.pesowear.View.Base.BaseWeareableActivity;
 import com.oscar.pesowear.View.Controls.BubbleLayout;
 import com.oscar.pesowear.View.Controls.InputBox;
 import com.oscar.pesowear.View.Controls.PesoPicker;
-
 import java.util.Calendar;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends BaseWeareableActivity implements
+public class RegistroActivity extends BaseWeareableActivity implements
         RegistroPesoPresenterImpl.RegistroView,
         DatePickerDialog.OnDateSetListener,
         InputBox.inputBoxCallBack {
@@ -32,21 +31,22 @@ public class MainActivity extends BaseWeareableActivity implements
     private Calendar c=Calendar.getInstance();
 
 
-    @BindView(R.id.bubbleCalendar)
+    @Nullable @BindView(R.id.bubbleCalendar)
     BubbleLayout bubbleCalendar;
-    @BindView(R.id.bubbleNotas)
+    @Nullable @BindView(R.id.bubbleNotas)
     BubbleLayout bubbleNotas;
-    @BindView(R.id.pesoPicker)
+    @Nullable @BindView(R.id.pesoPicker)
     PesoPicker pesoPicker;
-    @BindView(R.id.btnRegistrar)
+    @Nullable @BindView(R.id.btnRegistrar)
     Button btnRegistrar;
     private DatePickerDialog datePickerDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_registro);
         setPresenter();
+        setToolBar("Registro de peso",true);
     }
 
     @Override
@@ -59,10 +59,27 @@ public class MainActivity extends BaseWeareableActivity implements
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_registro,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_save:
+                presenter.agregarPeso(pesoPicker.getPeso(),bubbleNotas.getText());
+                break;
+        }
+        return true;
+    }
+
+    @Override
     public void setPresenter() {
         this.presenter=new RegistroPesoPresenterImpl();
         this.presenter.register(this);
         this.presenter.setFecha(c);
+        this.presenter.obtenerPesoInicial();
     }
 
     @Override
@@ -87,12 +104,6 @@ public class MainActivity extends BaseWeareableActivity implements
     public void initNotas(){
         inputBox.showAsync();
     }
-    @OnClick(R.id.btnRegistrar)
-    public void initRegistro(){
-        presenter.agregarPeso(pesoPicker.getPeso(),bubbleNotas.getText());
-    }
-
-
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth){
         presenter.setFecha(year,month,dayOfMonth);
@@ -119,5 +130,10 @@ public class MainActivity extends BaseWeareableActivity implements
     @Override
     public void setFechaValue(String value) {
             bubbleCalendar.setText(value);
+    }
+
+    @Override
+    public void pesoInicial(double peso) {
+            pesoPicker.setPeso(peso);
     }
 }

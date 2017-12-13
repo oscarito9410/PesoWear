@@ -6,24 +6,23 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import com.oscar.pesowear.R;
+import com.oscar.pesowear.View.Base.BaseWeareableActivity;
 import com.oscar.pesowear.View.Fragments.FragmentListaRegistro;
-import com.oscar.pesowear.View.MainActivity;
 
-public class Inicioctivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class Inicioctivity extends BaseWeareableActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_inicioctivity);
+        setContentView(R.layout.activity_inicio);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(this);
         navegarFragmento(new FragmentListaRegistro(),FragmentListaRegistro.TAG,false,false);
+        setToolBar("Inicio",false);
     }
 
     @Override
@@ -46,7 +45,7 @@ public class Inicioctivity extends AppCompatActivity implements BottomNavigation
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.action_add:
-                startActivity(new Intent(this, MainActivity.class));
+                startActivity(new Intent(this, RegistroActivity.class));
                 break;
         }
         return true;

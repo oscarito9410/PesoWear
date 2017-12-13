@@ -1,5 +1,8 @@
 package com.oscar.pesowear.Interactor;
+import com.oscar.maincore.Utils.ENUM_OBJETIVO;
+import com.oscar.pesowear.Data.Perfil;
 import com.oscar.pesowear.Data.Registro;
+import com.oscar.pesowear.Data.Registro_Table;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import java.util.Calendar;
@@ -15,7 +18,24 @@ public class DataBaseInteractor {
         r.save();
     }
 
+    public void agregarPerfil(String nombre, ENUM_OBJETIVO objetivo, double pesoInicio, double pesoMeta){
+        Perfil p=new Perfil();
+        p.setNombre(nombre);
+        p.setObjetivo(objetivo.getValue());
+        p.setPesoInicio(pesoInicio);
+        p.setPesoMeta(pesoMeta);
+        p.save();
+    }
+
     public List<Registro>obtenerListRegistros(){
-      return   SQLite.select().from(Registro.class).queryList();
+      return   SQLite.select().from(Registro.class).orderBy(Registro_Table.fecha,false).queryList();
+    }
+
+    public Registro obtenerLastRegistro(){
+        return  SQLite.select().from(Registro.class).orderBy(Registro_Table.fecha,false).querySingle();
+    }
+
+    public Perfil obtenerPerfil(){
+        return SQLite.select().from(Perfil.class).querySingle();
     }
 }

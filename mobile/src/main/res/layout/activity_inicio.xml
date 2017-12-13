@@ -6,10 +6,20 @@
     android:layout_height="match_parent"
     tools:context="com.oscar.pesowear.View.Activitys.Inicioctivity">
 
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/toolbar" />
+    </android.support.design.widget.AppBarLayout>
+
+
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/appbarLayout"
         android:layout_above="@+id/navigation"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginStart="@dimen/activity_horizontal_margin"

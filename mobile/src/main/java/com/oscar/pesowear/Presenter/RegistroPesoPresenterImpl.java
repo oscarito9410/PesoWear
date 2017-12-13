@@ -2,6 +2,7 @@ package com.oscar.pesowear.Presenter;
 import android.support.annotation.StringRes;
 import com.oscar.maincore.MVP.Presenter.BasePresenterImpl;
 import com.oscar.maincore.MVP.View.BaseView;
+import com.oscar.pesowear.Data.Perfil;
 import com.oscar.pesowear.Interactor.DataBaseInteractor;
 import com.oscar.pesowear.R;
 
@@ -37,6 +38,13 @@ public class RegistroPesoPresenterImpl extends BasePresenterImpl implements Regi
     }
 
     @Override
+    public void obtenerPesoInicial() {
+           if(interactor.obtenerLastRegistro()!=null){
+               view.pesoInicial(interactor.obtenerLastRegistro().getPeso());
+           }
+    }
+
+    @Override
     public void agregarPeso(Double peso, String nota) {
         if (selectedFecha != null) {
             interactor.agregarRegistroPeso(peso,selectedFecha,nota);
@@ -67,5 +75,6 @@ public class RegistroPesoPresenterImpl extends BasePresenterImpl implements Regi
     {
         void setErrorFecha(@StringRes int error);
         void setFechaValue(String value);
+        void pesoInicial(double peso);
     }
 }

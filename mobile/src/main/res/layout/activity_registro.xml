@@ -4,13 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.oscar.pesowear.View.MainActivity">
+    tools:context="com.oscar.pesowear.View.Activitys.RegistroActivity">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/toolbar" />
+    </android.support.design.widget.AppBarLayout>
 
 
     <com.oscar.pesowear.View.Controls.BubbleLayout
         android:id="@+id/bubbleCalendar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/appbarLayout"
         app:icono="@drawable/ic_calendar"
         app:text="Fecha de día de hoy" />
 
@@ -27,18 +37,11 @@
 
     <com.oscar.pesowear.View.Controls.PesoPicker
         android:id="@+id/pesoPicker"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/bubbleNotas"
-        android:layout_marginTop="20dp" />
-
-
-    <Button
-        android:id="@+id/btnRegistrar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/pesoPicker"
-        android:text="Registar peso" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp" />
 
 
 </RelativeLayout>

@@ -9,6 +9,7 @@ import java.util.Calendar;
  */
 
 public interface RegistroPesoPresenter extends BasePresenter {
+    void obtenerPesoInicial();
     void agregarPeso(Double peso,String nota);
     void setFecha(Calendar selectedFecha);
     void setFecha(int year,int month,int  dayOfMonth);
