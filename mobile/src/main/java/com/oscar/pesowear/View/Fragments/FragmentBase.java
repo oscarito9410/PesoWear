@@ -1,5 +1,4 @@
 package com.oscar.pesowear.View.Fragments;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 

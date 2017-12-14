@@ -7,4 +7,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="peso_actual">Peso actual: %1$s %2$s</string>
+    <string name="peso_objetivo">Mi objetivo: %1$s %2$s</string>
+    <string name="estatura_actual">Estatura actual:%1$s %2$s </string>
 </resources>

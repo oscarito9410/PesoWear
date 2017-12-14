@@ -28,27 +28,12 @@
         android:textColor="@color/colorPrimary"
         android:textSize="60sp" />
 
-    <com.shawnlin.numberpicker.NumberPicker
-        android:id="@+id/numberSec"
-        android:layout_width="110dp"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginRight="10dp"
-        app:np_dividerColor="@color/colorPrimary"
-        app:np_height="180dp"
-        app:np_max="9"
-        app:np_min="0"
-        app:np_value="1"
-        app:np_width="64dp" />
-
-
     <TextView
-        android:id="@+id/tvUnidad"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_marginLeft="10dp"
         android:gravity="center"
-        android:text="Kg"
+        android:text="cm"
         android:textColor="@color/colorPrimary"
         android:textSize="25sp" />
 

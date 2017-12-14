@@ -3,9 +3,12 @@ package com.oscar.pesowear.View.Controls;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+
 import com.oscar.pesowear.R;
 import com.shawnlin.numberpicker.NumberPicker;
 
@@ -13,25 +16,25 @@ import com.shawnlin.numberpicker.NumberPicker;
  * Created by oemy9 on 11/12/2017.
  */
 
-public class PesoPicker extends LinearLayout {
+public class PesoPicker extends BasePicker implements NumberPicker.OnValueChangeListener {
 
     private NumberPicker numberPrim, numberSec;
+    private TextView tvUnidad;
 
     public PesoPicker(Context context) {
         super(context);
-        inflateLayouts(context,null);
     }
 
     public PesoPicker(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        inflateLayouts(context,attrs);
     }
 
     public PesoPicker(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        inflateLayouts(context,attrs);
     }
 
+
+    @Override
     public void  inflateLayouts(Context context, AttributeSet attrs) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         layoutInflater.inflate(R.layout.peso_picker, this);
@@ -42,10 +45,25 @@ public class PesoPicker extends LinearLayout {
         super.onFinishInflate();
         numberPrim=(NumberPicker)findViewById(R.id.numberPrim);
         numberSec=(NumberPicker)findViewById(R.id.numberSec);
+        numberSec.setOnValueChangedListener(this);
+        numberPrim.setOnValueChangedListener(this);
+        tvUnidad=(TextView)findViewById(R.id.tvUnidad);
     }
 
     public Double getPeso(){
         return Double.parseDouble(getFormatNumber(numberPrim.getValue(),numberSec.getValue()));
+    }
+
+    @Override
+    public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+       double value=Double.valueOf(getFormatNumber(numberPrim.getValue(),numberSec.getValue()));
+       if(pickerChangedListener!=null){
+
+           if(!TextUtils.isEmpty(getUnidad())) {
+               tvUnidad.setText(getUnidad());
+           }
+           pickerChangedListener.onValueChanged(value);
+       }
     }
 
     public void setPeso(double peso){

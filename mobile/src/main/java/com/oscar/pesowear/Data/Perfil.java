@@ -22,6 +22,9 @@ public class Perfil extends BaseModel {
     @Column
     private double pesoMeta;
 
+    @Column
+    private String unidadMedida;
+
     public String getNombre() {
         return nombre;
     }
@@ -47,5 +50,8 @@ public class Perfil extends BaseModel {
     }
     public void setPesoMeta(double pesoMeta) {
         this.pesoMeta = pesoMeta;
+    }
+    public String getUnidadMedida() {return unidadMedida;}
+    public void setUnidadMedida(String unidadMedida) {this.unidadMedida = unidadMedida;
     }
 }

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.oscar.pesowear.View.Activities.PerfilActivity">
+
+    <LinearLayout
+        android:id="@+id/faqCuentaUnidad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_background_azul"
+        android:onClick="onClickUnidad"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/textoFAQ"
+            android:text="Unidad de medida"
+            android:textAlignment="center"
+            android:textAllCaps="true" />
+
+        <ImageView
+            android:id="@+id/imageArrowUnidad"
+            style="@style/imageFAQ"
+            android:src="@drawable/ic_arrow_down" />
+    </LinearLayout>
+
+    <com.github.aakira.expandablelayout.ExpandableLinearLayout
+        android:id="@+id/expandableUnidad"
+        style="@style/exapandible"
+        android:layout_height="100dp"
+        android:onClick="onClickUnidad"
+        app:ael_expanded="false"
+        app:ael_orientation="vertical">
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="Kilogramos"
+                android:textSize="18sp" />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="Pies, pulgadas"
+                android:textSize="18sp" />
+        </RadioGroup>
+    </com.github.aakira.expandablelayout.ExpandableLinearLayout>
+
+    <LinearLayout
+        android:id="@+id/faqEstatura"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_background_azul"
+        android:onClick="onClickEstatura"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvEstatura"
+            style="@style/textoFAQ"
+            android:text="Estatura"
+            android:textAlignment="center"
+            android:textAllCaps="true" />
+
+        <ImageView
+            android:id="@+id/imageArrowEstatura"
+            style="@style/imageFAQ"
+            android:src="@drawable/ic_arrow_down" />
+    </LinearLayout>
+
+    <com.github.aakira.expandablelayout.ExpandableLinearLayout
+        android:id="@+id/expandableEstatura"
+        style="@style/exapandible"
+        app:ael_expanded="false"
+        app:ael_orientation="vertical">
+
+        <com.oscar.pesowear.View.Controls.AlturaPicker
+            android:id="@+id/alturaPicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"></com.oscar.pesowear.View.Controls.AlturaPicker>
+
+    </com.github.aakira.expandablelayout.ExpandableLinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/faqActual"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_background_azul"
+        android:onClick="onClickActual"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvPesoActual"
+            style="@style/textoFAQ"
+            android:text="Peso actual: 90:KG"
+            android:textAlignment="center"
+            android:textAllCaps="true" />
+
+        <ImageView
+            android:id="@+id/imageArrowActual"
+            style="@style/imageFAQ"
+            android:src="@drawable/ic_arrow_down" />
+    </LinearLayout>
+
+    <com.github.aakira.expandablelayout.ExpandableLinearLayout
+        android:id="@+id/expandableActual"
+        style="@style/exapandible"
+        app:ael_expanded="false"
+        app:ael_orientation="vertical">
+
+        <com.oscar.pesowear.View.Controls.PesoPicker
+            android:id="@+id/pesoPickerActual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"></com.oscar.pesowear.View.Controls.PesoPicker>
+    </com.github.aakira.expandablelayout.ExpandableLinearLayout>
+
+    <LinearLayout
+        android:id="@+id/faqObjetivo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_background_azul"
+        android:onClick="onClickObjetivo"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvObjetivo"
+            style="@style/textoFAQ"
+            android:text="Mi objetivo: 86.3kg"
+            android:textAlignment="center"
+            android:textAllCaps="true" />
+
+        <ImageView
+            android:id="@+id/imageArrowObjetivo"
+            style="@style/imageFAQ"
+            android:src="@drawable/ic_arrow_down" />
+    </LinearLayout>
+
+    <com.github.aakira.expandablelayout.ExpandableLinearLayout
+        android:id="@+id/expandableObjetivo"
+        style="@style/exapandible"
+        app:ael_expanded="false"
+        app:ael_orientation="vertical">
+
+        <com.oscar.pesowear.View.Controls.PesoPicker
+            android:id="@+id/pesoPickerObjetivo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"></com.oscar.pesowear.View.Controls.PesoPicker>
+    </com.github.aakira.expandablelayout.ExpandableLinearLayout>
+
+</LinearLayout>

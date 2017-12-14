@@ -44,6 +44,7 @@ public class FragmentListaRegistro extends FragmentBase implements ConsultaPrese
     @BindView(R.id.lineChart)
     LineChart lineChart;
 
+    private boolean hasUpdated=false;
 
     private AdapterRegistro adpt;
 
@@ -64,6 +65,7 @@ public class FragmentListaRegistro extends FragmentBase implements ConsultaPrese
     @Override
     public void onResume() {
         super.onResume();
+        presenter.obtenerRegistros();
     }
 
     @Override
@@ -76,8 +78,6 @@ public class FragmentListaRegistro extends FragmentBase implements ConsultaPrese
         presenter=new ConsultaPresenterImpl();
         presenter.register(this);
         presenter.obtenerRegistros();
-
-
     }
 
     @Override
@@ -103,9 +103,11 @@ public class FragmentListaRegistro extends FragmentBase implements ConsultaPrese
             LineDataSet dataSet = new LineDataSet(listEntries, "Peso");
             dataSet.setDrawFilled(true);
             LineData lineData = new LineData(dataSet);
+            dataSet.notifyDataSetChanged();
             lineChart.setData(lineData);
             lineChart.notifyDataSetChanged();
             lineChart.invalidate();
+            hasUpdated=true;
         }
     }
 

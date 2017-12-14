@@ -1,4 +1,4 @@
-package com.oscar.pesowear.View.Activitys;
+package com.oscar.pesowear.View.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;

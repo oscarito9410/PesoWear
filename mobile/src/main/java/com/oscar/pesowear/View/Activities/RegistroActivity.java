@@ -1,4 +1,4 @@
-package com.oscar.pesowear.View.Activitys;
+package com.oscar.pesowear.View.Activities;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
@@ -7,7 +7,6 @@ import android.support.annotation.StringRes;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.DatePicker;
 import com.oscar.pesowear.Presenter.RegistroPesoPresenter;
 import com.oscar.pesowear.Presenter.RegistroPesoPresenterImpl;
@@ -37,8 +36,6 @@ public class RegistroActivity extends BaseWeareableActivity implements
     BubbleLayout bubbleNotas;
     @Nullable @BindView(R.id.pesoPicker)
     PesoPicker pesoPicker;
-    @Nullable @BindView(R.id.btnRegistrar)
-    Button btnRegistrar;
     private DatePickerDialog datePickerDialog;
 
     @Override
