@@ -40,13 +40,6 @@ public class ConsultaPresenterImpl extends BasePresenterImpl implements Consulta
             view.setListRegistros(interactor.obtenerListRegistros());
             view.setListEntriesChart(listEntries);
         }
-
-        if(interactor.obtenerPerfil()==null){
-            interactor.agregarPerfil("Oscar Emilio", ENUM_OBJETIVO.GANAR_PESO,80,60);
-        }
-        else{
-            view.setPerfil(interactor.obtenerPerfil());
-        }
     }
 
     public interface ConsultaView extends BaseView{

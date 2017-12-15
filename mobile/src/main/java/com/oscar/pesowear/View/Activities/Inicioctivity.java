@@ -35,6 +35,8 @@ public class Inicioctivity extends BaseWeareableActivity implements BottomNaviga
         return true;
     }
 
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_home,menu);

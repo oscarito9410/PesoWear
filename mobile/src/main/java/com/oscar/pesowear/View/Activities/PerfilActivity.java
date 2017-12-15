@@ -4,15 +4,20 @@ import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.aakira.expandablelayout.ExpandableLayout;
 import com.oscar.maincore.MVP.View.BaseView;
+import com.oscar.pesowear.Data.Perfil;
 import com.oscar.pesowear.Presenter.PerfilPresenter;
 import com.oscar.pesowear.Presenter.PerfilPresenterImpl;
 import com.oscar.pesowear.R;
+import com.oscar.pesowear.View.Base.BaseWeareableActivity;
 import com.oscar.pesowear.View.Controls.AlturaPicker;
 import com.oscar.pesowear.View.Controls.BasePicker;
 import com.oscar.pesowear.View.Controls.ExpandableListenerCustom;
@@ -23,7 +28,7 @@ import java.util.concurrent.TimeUnit;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class PerfilActivity extends AppCompatActivity implements BaseView {
+public class PerfilActivity extends BaseWeareableActivity implements PerfilPresenterImpl.ViewPerfil {
     private PerfilPresenter presenter;
 
     @BindView(R.id.imageArrowUnidad)
@@ -79,23 +84,40 @@ public class PerfilActivity extends AppCompatActivity implements BaseView {
         expandableObjetivo.toggle();
         presenter.setHideObjetivo(expandableObjetivo.isExpanded());
     }
-
     public void onClickEstatura(View view) {
         expandableEstatura.toggle();
         presenter.setHideEstatura(expandableEstatura.isExpanded());
     }
 
-
     @Override
     public void initView() {
         ButterKnife.bind(this);
+        setToolbar(R.string.perfil,true);
     }
 
     @Override
     public void setPresenter() {
             presenter=new PerfilPresenterImpl();
             presenter.register(this);
+            presenter.obtenerPerfil();
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_perfil,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_save:
+                presenter.guardarPerfil();
+                break;
+        }
+        return true;
+    }
+
 
     @Override
     public void setListeners() {
@@ -114,7 +136,7 @@ public class PerfilActivity extends AppCompatActivity implements BaseView {
                     public void onValueChanged(double value) {
                         if(!presenter.getIsHiddenEstatura()) {
                             presenter.setAltura((int) value);
-                            tvEstatura.setText(getString(R.string.estatura_actual, String.valueOf(value), presenter.getUnidadMedida()));
+                            tvEstatura.setText(getString(R.string.estatura_actual, String.valueOf(value), presenter.getUnidadMedidaAltura()));
                         }
                     }
                 });
@@ -166,15 +188,30 @@ public class PerfilActivity extends AppCompatActivity implements BaseView {
         pesoPickerActual.setUnidad(presenter.getUnidadMedida());
         pesoPickerObjetivo.setUnidad(presenter.getUnidadMedida());
         alturaPicker.setUnidad(presenter.getUnidadMedida());
-
     }
-
-
 
     @Override
     public Activity getActivityInstance() {
         return this;
     }
 
+    @Override
+    public void onPerfilSaved(int mensaje) {
+        Toast.makeText(this, getString(mensaje), Toast.LENGTH_SHORT).show();
+    }
 
+    @Override
+    public void onError(int mensaje) {
+        Toast.makeText(this, getString(mensaje), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void setPerfil(Perfil p) {
+        pesoPickerObjetivo.setPeso(p.getPesoMeta());
+        pesoPickerActual.setPeso(p.getPesoInicio());
+        alturaPicker.setAltura(p.getEstatura());
+        tvObjetivo.setText(getString(R.string.peso_objetivo, String.valueOf(p.getPesoMeta()),p.getUnidadMedida()));
+        tvEstatura.setText(getString(R.string.estatura_actual, String.valueOf(p.getEstatura()), presenter.getUnidadMedidaAltura()));
+        tvPesoActual.setText(getString(R.string.peso_actual, String.valueOf(p.getPesoInicio()), presenter.getUnidadMedida()));
+    }
 }

@@ -7,13 +7,20 @@
     android:orientation="vertical"
     tools:context="com.oscar.pesowear.View.Activities.PerfilActivity">
 
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/toolbar"/>
+    </android.support.design.widget.AppBarLayout>
+
     <LinearLayout
         android:id="@+id/faqCuentaUnidad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_background_azul"
         android:onClick="onClickUnidad"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
 
         <TextView
             style="@style/textoFAQ"
@@ -32,7 +39,7 @@
         style="@style/exapandible"
         android:layout_height="100dp"
         android:onClick="onClickUnidad"
-        app:ael_expanded="false"
+        app:ael_expanded="true"
         app:ael_orientation="vertical">
 
         <RadioGroup
@@ -86,7 +93,8 @@
             android:id="@+id/alturaPicker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"></com.oscar.pesowear.View.Controls.AlturaPicker>
+            android:layout_gravity="center_horizontal">
+        </com.oscar.pesowear.View.Controls.AlturaPicker>
 
     </com.github.aakira.expandablelayout.ExpandableLinearLayout>
 
@@ -102,7 +110,7 @@
         <TextView
             android:id="@+id/tvPesoActual"
             style="@style/textoFAQ"
-            android:text="Peso actual: 90:KG"
+            android:text="Peso actual"
             android:textAlignment="center"
             android:textAllCaps="true" />
 
@@ -137,7 +145,7 @@
         <TextView
             android:id="@+id/tvObjetivo"
             style="@style/textoFAQ"
-            android:text="Mi objetivo: 86.3kg"
+            android:text="Mi objetivo"
             android:textAlignment="center"
             android:textAllCaps="true" />
 

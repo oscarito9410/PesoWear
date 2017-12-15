@@ -18,13 +18,34 @@ public class DataBaseInteractor {
         r.save();
     }
 
-    public void agregarPerfil(String nombre, ENUM_OBJETIVO objetivo, double pesoInicio, double pesoMeta){
-        Perfil p=new Perfil();
-        p.setNombre(nombre);
-        p.setObjetivo(objetivo.getValue());
-        p.setPesoInicio(pesoInicio);
-        p.setPesoMeta(pesoMeta);
-        p.save();
+    /**
+     * Ingresa un nuevo perfil  a la bd
+     * @param nombre  Nombre de usuario
+     * @param objetivo su objetivo ganar o perder peso
+     * @param pesoInicio peso de inicio
+     * @param pesoMeta peso meta
+     * @param estatura estatura actual
+     * @param unidadMedida unidad de medidass
+     * @returns si el valor es true quiere decir que se actualizo, si es false se agrego
+     */
+    public boolean agregarActualizarPerfil(String nombre, ENUM_OBJETIVO objetivo, double pesoInicio, double pesoMeta, int estatura, String unidadMedida){
+            boolean update=obtenerPerfil()!=null;
+            Perfil p = update? obtenerPerfil(): new Perfil();
+            p.setNombre(nombre);
+            p.setObjetivo(objetivo.getValue());
+            p.setPesoInicio(pesoInicio);
+            p.setPesoMeta(pesoMeta);
+            p.setEstatura(estatura);
+            p.setUnidadMedida(unidadMedida);
+            if(update){
+               p.update();
+               return true;
+            }
+           else {
+                p.insert();
+                return false;
+            }
+
     }
 
     public List<Registro>obtenerListRegistros(){

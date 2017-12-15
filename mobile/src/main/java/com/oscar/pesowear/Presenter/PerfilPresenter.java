@@ -21,4 +21,7 @@ public interface PerfilPresenter extends BasePresenter {
     void setAltura(int altura);
     void setUnidadMedida(String unidad);
     String getUnidadMedida();
+    String getUnidadMedidaAltura();
+    void guardarPerfil();
+    void obtenerPerfil();
 }

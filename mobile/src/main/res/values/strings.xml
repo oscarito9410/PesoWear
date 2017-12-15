@@ -9,5 +9,11 @@
     <string name="title_notifications">Notifications</string>
     <string name="peso_actual">Peso actual: %1$s %2$s</string>
     <string name="peso_objetivo">Mi objetivo: %1$s %2$s</string>
-    <string name="estatura_actual">Estatura actual:%1$s %2$s </string>
+    <string name="estatura_actual">Estatura:%1$s %2$s </string>
+    <string name="perfil_guardado">Perfil guardado correctamente</string>
+    <string name="perfil">Perfil</string>
+    <string name="ingresa_peso_actual">Ingresa tu peso actual</string>
+    <string name="ingresa_peso_objetivo">Ingresa tu peso objetivo</string>
+    <string name="ingres_tu_estatura">Ingresa tu estatura</string>
+    <string name="perfil_actualizado">Perfil actualizado correctamente</string>
 </resources>
