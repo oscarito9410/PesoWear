@@ -104,10 +104,11 @@ public class FragmentListaRegistro extends FragmentBase implements ConsultaPrese
             dataSet.setDrawFilled(true);
             LineData lineData = new LineData(dataSet);
             dataSet.notifyDataSetChanged();
+            /*
             lineChart.setData(lineData);
             lineChart.notifyDataSetChanged();
             lineChart.invalidate();
-            hasUpdated=true;
+            hasUpdated=true;*/
         }
     }
 

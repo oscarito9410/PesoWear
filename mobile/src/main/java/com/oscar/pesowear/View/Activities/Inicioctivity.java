@@ -49,6 +49,9 @@ public class Inicioctivity extends BaseWeareableActivity implements BottomNaviga
             case R.id.action_add:
                 startActivity(new Intent(this, RegistroActivity.class));
                 break;
+            case R.id.action_profile:
+                startActivity(new Intent(this,PerfilActivity.class));
+                break;
         }
         return true;
     }

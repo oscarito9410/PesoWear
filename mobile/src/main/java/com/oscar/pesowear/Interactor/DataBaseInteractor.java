@@ -60,3 +60,4 @@ public class DataBaseInteractor {
         return SQLite.select().from(Perfil.class).querySingle();
     }
 }
+

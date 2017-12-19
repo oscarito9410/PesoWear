@@ -72,28 +72,32 @@ public class AdapterRegistro  extends  RecyclerView.Adapter<AdapterRegistro.View
             super(itemView);
             ButterKnife.bind(this,itemView);
         }
-        public void bindInfo(Perfil p, int position){
-            Registro r=listRegistros.get(position);
-            tvPeso.setText(String.valueOf(r.getPeso())+"KG");
-            tvDia.setText(dayFormat.format(r.getFecha()).replace(".","").toUpperCase());
+        public void bindInfo(Perfil p, int position) {
+            Registro r = listRegistros.get(position);
+            tvPeso.setText(String.valueOf(r.getPeso()) + "KG");
+            tvDia.setText(dayFormat.format(r.getFecha()).replace(".", "").toUpperCase());
             tvHora.setText(hourFormat.format(r.getFecha()));
-            double comparacion =position!=0 && position!=listRegistros.size()? listRegistros.get(position).getPeso() - listRegistros.get(position-1).getPeso():listRegistros.get(position).getPeso();
-            double imc= FormulasUtils.getImc(r.getPeso(),171);
-            tvImc.setText(String.format("%1.2f",imc).concat(" IMC"));
+            double comparacion = position != 0 && position != listRegistros.size() ? listRegistros.get(position).getPeso() - listRegistros.get(position - 1).getPeso() : listRegistros.get(position).getPeso();
+            double imc = FormulasUtils.getImc(r.getPeso(), 171);
+            tvImc.setText(String.format("%1.2f", imc).concat(" IMC"));
             tvComparacion.setText(comparacion > 0 ? "+" + String.format("%1.2f", comparacion) : "-" + String.format("%1.2f", comparacion));
-            switch (ENUM_OBJETIVO.fromValue(p.getObjetivo())){
-                case GANAR_PESO:
-                    if (comparacion < 0)
-                        tvComparacion.setTextColor(Color.RED);
-                    else
-                        tvComparacion.setTextColor(Color.GREEN);
-                case PERDIDA_PESO:
-                    if (comparacion < 0)
-                        tvComparacion.setTextColor(Color.GREEN);
-                    else
-                        tvComparacion.setTextColor(Color.RED);
-                    break;
-            }
+
+            /*
+            if (ENUM_OBJETIVO.fromValue(p.getObjetivo())!=null) {
+                switch (ENUM_OBJETIVO.fromValue(p.getObjetivo())) {
+                    case GANAR_PESO:
+                        if (comparacion < 0)
+                            tvComparacion.setTextColor(Color.RED);
+                        else
+                            tvComparacion.setTextColor(Color.GREEN);
+                    case PERDIDA_PESO:
+                        if (comparacion < 0)
+                            tvComparacion.setTextColor(Color.GREEN);
+                        else
+                            tvComparacion.setTextColor(Color.RED);
+                        break;
+                }
+            }*/
         }
 
     }

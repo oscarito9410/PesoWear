@@ -16,13 +16,12 @@
         <activity
             android:name=".View.Activities.Inicioctivity"
             android:label="@string/title_activity_inicioctivity">
-        </activity>
-        <activity android:name=".View.Activities.PerfilActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".View.Activities.PerfilActivity">
         </activity>
     </application>
 

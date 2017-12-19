@@ -29,11 +29,9 @@ public class Perfil extends BaseModel {
     public String getNombre() {
         return nombre;
     }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
     public int getObjetivo() {
         return objetivo;
     }
@@ -54,10 +52,6 @@ public class Perfil extends BaseModel {
     }
     public String getUnidadMedida() {return unidadMedida;}
     public int getEstatura() {return estatura;}
-    public void setEstatura(int estatura) {this.estatura = estatura;
-    }
-
-    public void setUnidadMedida(String unidadMedida) {this.unidadMedida = unidadMedida;
-
-    }
+    public void setEstatura(int estatura) {this.estatura = estatura;}
+    public void setUnidadMedida(String unidadMedida) {this.unidadMedida = unidadMedida;}
 }

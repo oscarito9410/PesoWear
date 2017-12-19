@@ -4,6 +4,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/action_profile"
+        android:title="Perfil"
+        android:icon="@drawable/ic_account"
+        app:showAsAction="always" />
+
+    <item
         android:id="@+id/action_add"
         android:title="Agregar"
         android:icon="@drawable/ic_add"
