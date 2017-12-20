@@ -6,6 +6,7 @@ import com.oscar.pesowear.Data.Registro_Table;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -42,6 +43,7 @@ public class DataBaseInteractor {
                return true;
             }
            else {
+                p.setFechaInicio(new Date());
                 p.insert();
                 return false;
             }
@@ -58,6 +60,11 @@ public class DataBaseInteractor {
 
     public Perfil obtenerPerfil(){
         return SQLite.select().from(Perfil.class).querySingle();
+    }
+
+    public Registro obtenerUltimoRegistro(){
+        return   SQLite.select().from(Registro.class).orderBy(Registro_Table.fecha,false).querySingle();
+
     }
 }
 

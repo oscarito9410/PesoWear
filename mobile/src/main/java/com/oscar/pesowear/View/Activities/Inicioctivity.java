@@ -11,6 +11,7 @@ import android.view.MenuItem;
 
 import com.oscar.pesowear.R;
 import com.oscar.pesowear.View.Base.BaseWeareableActivity;
+import com.oscar.pesowear.View.Fragments.FragmentIMC;
 import com.oscar.pesowear.View.Fragments.FragmentListaRegistro;
 
 public class Inicioctivity extends BaseWeareableActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -31,6 +32,9 @@ public class Inicioctivity extends BaseWeareableActivity implements BottomNaviga
             case R.id.navigation_home:
                 navegarFragmento(new FragmentListaRegistro(),FragmentListaRegistro.TAG,false,false);
                 break;
+          default:
+              navegarFragmento(new FragmentIMC(), FragmentIMC.TAG,false,false);
+              break;
         }
         return true;
     }

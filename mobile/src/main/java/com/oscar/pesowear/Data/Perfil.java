@@ -4,6 +4,8 @@ import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
 import com.raizlabs.android.dbflow.structure.BaseModel;
 
+import java.util.Date;
+
 /**
  * Created by oemy9 on 12/12/2017.
  */
@@ -25,6 +27,26 @@ public class Perfil extends BaseModel {
     private String unidadMedida;
     @Column
     private int estatura;
+
+    @Column
+    private Date fechaInicio;
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Date getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
 
     public String getNombre() {
         return nombre;
