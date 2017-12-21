@@ -28,6 +28,7 @@ public class Inicioctivity extends BaseWeareableActivity implements BottomNaviga
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        super.onOptionsItemSelected(item);
         switch (item.getItemId()){
             case R.id.navigation_home:
                 navegarFragmento(new FragmentListaRegistro(),FragmentListaRegistro.TAG,false,false);

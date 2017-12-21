@@ -35,7 +35,7 @@ public class DataBaseInteractor {
             p.setNombre(nombre);
             p.setObjetivo(objetivo.getValue());
             p.setPesoInicio(pesoInicio);
-            p.setPesoMeta(pesoMeta);
+            p.setPesoObjetivo(pesoMeta);
             p.setEstatura(estatura);
             p.setUnidadMedida(unidadMedida);
             if(update){

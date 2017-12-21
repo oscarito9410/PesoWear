@@ -139,9 +139,14 @@ public  class PerfilPresenterImpl extends BasePresenterImpl implements  PerfilPr
         Perfil p=interactor.obtenerPerfil();
         if(p!=null){
                 this.setPesoActual(p.getPesoInicio());
-                this.setPesoObjetivo(p.getPesoMeta());
+                this.setPesoObjetivo(p.getPesoObjetivo());
                 this.setAltura(p.getEstatura());
                 view.setPerfil(p);
+        }
+        else{
+            this.setPesoActual(75d);
+            this.setPesoObjetivo(70d);
+            this.setAltura(170);
         }
     }
 

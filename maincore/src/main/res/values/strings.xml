@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MainCore</string>
+    <string name="estatus_normal">Normal</string>
+    <string name="estatus_sobrepeso">SobrePeso</string>
+    <string name="estatus_obesidad_uno">Obesidad grado 1</string>
+    <string name="estatus_obesidad_dos">Obesidad grado 2</string>
+    <string name="estatus_obesidad_tres">Obesidad grado 3</string>
 </resources>

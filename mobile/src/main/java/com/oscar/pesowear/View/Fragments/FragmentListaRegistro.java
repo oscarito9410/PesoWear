@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
@@ -37,6 +39,7 @@ import butterknife.ButterKnife;
 public class FragmentListaRegistro extends FragmentBase implements ConsultaPresenterImpl.ConsultaView {
     private View rootView;
     private ConsultaPresenter presenter;
+    private int countFired=0;
 
     @BindView(R.id.rlRegistro)
     RecyclerView rlRegistro;
@@ -44,28 +47,22 @@ public class FragmentListaRegistro extends FragmentBase implements ConsultaPrese
     @BindView(R.id.lineChart)
     LineChart lineChart;
 
-    private boolean hasUpdated=false;
 
     private AdapterRegistro adpt;
+    private LineDataSet dataSet;
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        Toast.makeText(getContext(), "Ok", Toast.LENGTH_SHORT).show();
-    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView=inflater.inflate(R.layout.fragment_lista, container,false);
-        setPresenter();
         return rootView;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        presenter.obtenerRegistros();
+        setPresenter();
     }
 
     @Override
@@ -100,15 +97,28 @@ public class FragmentListaRegistro extends FragmentBase implements ConsultaPrese
     @Override
     public void setListEntriesChart(List<Entry> listEntries) {
         if(listEntries.size()>0) {
-            LineDataSet dataSet = new LineDataSet(listEntries, "Peso");
+            if(dataSet==null) {
+                dataSet = new LineDataSet(listEntries, "Peso");
+            }
+            else{
+                dataSet.clear();
+                for(Entry e: listEntries){
+                    dataSet.addEntry(e);
+                    dataSet.notifyDataSetChanged();
+                }
+            }
             dataSet.setDrawFilled(true);
+            dataSet.setColor(ContextCompat.getColor(getContext(),R.color.colorPrimaryDark));
+            dataSet.setFillColor(ContextCompat.getColor(getContext(),R.color.colorPrimary));
+            dataSet.setCircleColor(ContextCompat.getColor(getContext(),R.color.colorPrimaryDark));
             LineData lineData = new LineData(dataSet);
-            dataSet.notifyDataSetChanged();
-            /*
             lineChart.setData(lineData);
+            if(countFired==0) {
+                lineChart.animateX(500);
+                countFired++;
+            }
             lineChart.notifyDataSetChanged();
             lineChart.invalidate();
-            hasUpdated=true;*/
         }
     }
 

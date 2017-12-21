@@ -1,9 +1,7 @@
 package com.oscar.pesowear.View.Activities;
 
 import android.app.Activity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,7 +10,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.aakira.expandablelayout.ExpandableLayout;
-import com.oscar.maincore.MVP.View.BaseView;
 import com.oscar.pesowear.Data.Perfil;
 import com.oscar.pesowear.Presenter.PerfilPresenter;
 import com.oscar.pesowear.Presenter.PerfilPresenterImpl;
@@ -22,8 +19,6 @@ import com.oscar.pesowear.View.Controls.AlturaPicker;
 import com.oscar.pesowear.View.Controls.BasePicker;
 import com.oscar.pesowear.View.Controls.ExpandableListenerCustom;
 import com.oscar.pesowear.View.Controls.PesoPicker;
-
-import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -110,6 +105,7 @@ public class PerfilActivity extends BaseWeareableActivity implements PerfilPrese
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
         switch (item.getItemId()){
             case R.id.action_save:
                 presenter.guardarPerfil();
@@ -207,10 +203,10 @@ public class PerfilActivity extends BaseWeareableActivity implements PerfilPrese
 
     @Override
     public void setPerfil(Perfil p) {
-        pesoPickerObjetivo.setPeso(p.getPesoMeta());
+        pesoPickerObjetivo.setPeso(p.getPesoObjetivo());
         pesoPickerActual.setPeso(p.getPesoInicio());
         alturaPicker.setAltura(p.getEstatura());
-        tvObjetivo.setText(getString(R.string.peso_objetivo, String.valueOf(p.getPesoMeta()),p.getUnidadMedida()));
+        tvObjetivo.setText(getString(R.string.peso_objetivo, String.valueOf(p.getPesoObjetivo()),p.getUnidadMedida()));
         tvEstatura.setText(getString(R.string.estatura_actual, String.valueOf(p.getEstatura()), presenter.getUnidadMedidaAltura()));
         tvPesoActual.setText(getString(R.string.peso_actual, String.valueOf(p.getPesoInicio()), presenter.getUnidadMedida()));
     }

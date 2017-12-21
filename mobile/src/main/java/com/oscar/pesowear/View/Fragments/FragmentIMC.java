@@ -3,23 +3,17 @@ package com.oscar.pesowear.View.Fragments;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.TextView;
 import com.github.anastr.speedviewlib.SpeedView;
-import com.numetriclabz.numandroidcharts.ChartData;
-import com.numetriclabz.numandroidcharts.GaugeChart;
+import com.github.anastr.speedviewlib.components.note.TextNote;
 import com.oscar.pesowear.Data.IMCResult;
 import com.oscar.pesowear.Presenter.IMCPresenter;
 import com.oscar.pesowear.Presenter.IMCPresenterImpl;
 import com.oscar.pesowear.R;
-import com.oscar.pesowear.View.Controls.GuageChartM;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -33,20 +27,40 @@ public class FragmentIMC extends FragmentBase implements IMCPresenterImpl.IMCVie
 
     @BindView(R.id.speedView)
     SpeedView speedView;
+    @BindView(R.id.tvPesoActual)
+    TextView tvPesoActual;
+    @BindView(R.id.tvPesoObjetivo)
+    TextView tvPesoObjetivo;
+    @BindView(R.id.tvEstatusIMC)
+    TextView tvEstatusIMC;
+    @BindView(R.id.tvFechaPesoActual)
+    TextView tvFechaPesoActual;
+    @BindView(R.id.tvPesoRestante)
+    TextView tvPesoRestante;
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView=inflater.inflate(R.layout.fragment_imc,container,false);
-        setPresenter();
         return rootView;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        setPresenter();
+    }
 
     @Override
     public void onIMCResult(IMCResult result) {
         speedView.setSpeedAt(Float.parseFloat(result.getImc().toString()));
+        tvPesoActual.setText(String.valueOf(result.getPesoActual()));
+        tvPesoObjetivo.setText(String.valueOf(result.getPesoObjetivo()));
+        tvEstatusIMC.setText(result.getEstatusDescription().getDescription());
+        tvEstatusIMC.setTextColor(ContextCompat.getColor(getContext(),result.getEstatusDescription().getColor()));
+        tvFechaPesoActual.setText(result.getFechaIncio());
+        tvPesoRestante.setText(String.valueOf(result.getPesoRestante()));
     }
 
     @Override

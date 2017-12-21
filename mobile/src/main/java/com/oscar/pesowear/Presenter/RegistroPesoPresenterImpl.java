@@ -42,6 +42,9 @@ public class RegistroPesoPresenterImpl extends BasePresenterImpl implements Regi
            if(interactor.obtenerLastRegistro()!=null){
                view.pesoInicial(interactor.obtenerLastRegistro().getPeso());
            }
+           else if(interactor.obtenerPerfil()!=null){
+               view.pesoInicial(interactor.obtenerPerfil().getPesoInicio());
+           }
     }
 
     @Override

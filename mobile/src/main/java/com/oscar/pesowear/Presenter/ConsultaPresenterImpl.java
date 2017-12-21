@@ -39,6 +39,7 @@ public class ConsultaPresenterImpl extends BasePresenterImpl implements Consulta
         if(view!=null){
             view.setListRegistros(interactor.obtenerListRegistros());
             view.setListEntriesChart(listEntries);
+            view.setPerfil(interactor.obtenerPerfil());
         }
     }
 

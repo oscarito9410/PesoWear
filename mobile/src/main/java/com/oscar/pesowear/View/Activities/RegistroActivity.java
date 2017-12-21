@@ -63,6 +63,7 @@ public class RegistroActivity extends BaseWeareableActivity implements
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
         switch (item.getItemId()){
             case R.id.action_save:
                 presenter.agregarPeso(pesoPicker.getPeso(),bubbleNotas.getText());

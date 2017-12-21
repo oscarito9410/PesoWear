@@ -1,22 +1,53 @@
 package com.oscar.pesowear.Data;
 
+import com.oscar.maincore.Utils.EstatusDescription;
+
 /**
  * Created by oemy9 on 19/12/2017.
  */
 
 public class IMCResult {
+    private Double pesoActual;
     private Double pesoInicio;
-    private Double pesoFin;
+    private Double pesoObjetivo;
     private Double IMC;
     private String fechaIncio;
     private String fechaFin;
-    private String descripcion;
+    private EstatusDescription estatusDescription;
 
-    public IMCResult(Double pesoInicio, Double pesoUltimo, Double IMC, String descripcion) {
+
+
+    public IMCResult(Double pesoInicio, Double pesoActual, Double IMC) {
         this.pesoInicio = pesoInicio;
-        this.pesoFin = pesoUltimo;
         this.IMC = IMC;
-        this.descripcion = descripcion;
+        this.pesoActual=pesoActual;
+    }
+
+    public Double getPesoRestante() {
+        double pesoRestante=0;
+        if(pesoObjetivo>pesoInicio){
+            pesoRestante=pesoObjetivo-pesoInicio;
+        }
+        else{
+            pesoRestante=pesoInicio-pesoObjetivo;
+        }
+        return pesoRestante;
+    }
+
+    public Double getPesoActual() {
+        return pesoActual;
+    }
+
+    public void setPesoActual(Double pesoActual) {
+        this.pesoActual = pesoActual;
+    }
+
+    public Double getPesoObjetivo() {
+        return pesoObjetivo;
+    }
+
+    public void setPesoObjetivo(Double pesoObjetivo) {
+        this.pesoObjetivo = pesoObjetivo;
     }
 
     public Double getPesoInicio() {
@@ -27,13 +58,6 @@ public class IMCResult {
         this.pesoInicio = pesoInicio;
     }
 
-    public Double getPesoFin() {
-        return pesoFin;
-    }
-
-    public void setPesoFin(Double pesoFin) {
-        this.pesoFin = pesoFin;
-    }
 
     public Double getImc() {
         return IMC;
@@ -43,12 +67,12 @@ public class IMCResult {
         this.IMC = imc;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public EstatusDescription getEstatusDescription() {
+        return estatusDescription;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setEstatusDescription(EstatusDescription estatusDescription) {
+        this.estatusDescription = estatusDescription;
     }
 
     public String getFechaIncio() {
@@ -71,11 +95,10 @@ public class IMCResult {
     public String toString() {
         return "IMCResult{" +
                 "pesoInicio=" + pesoInicio +
-                ", pesoFin=" + pesoFin +
+                ", pesoActual=" + pesoActual +
                 ", IMC=" + IMC +
                 ", fechaIncio='" + fechaIncio + '\'' +
                 ", fechaFin='" + fechaFin + '\'' +
-                ", descripcion='" + descripcion + '\'' +
                 '}';
     }
 }

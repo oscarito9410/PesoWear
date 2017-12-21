@@ -5,9 +5,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.oscar.maincore.Utils.ENUM_OBJETIVO;
+import com.oscar.maincore.Utils.EstatusDescription;
 import com.oscar.maincore.Utils.FormulasUtils;
 import com.oscar.pesowear.Data.Perfil;
 import com.oscar.pesowear.Data.Registro;
@@ -68,6 +70,8 @@ public class AdapterRegistro  extends  RecyclerView.Adapter<AdapterRegistro.View
         TextView tvComparacion;
         @BindView(R.id.tvIMC)
         TextView tvImc;
+        @BindView(R.id.imgArrow)
+        ImageView imgArrow;
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
@@ -78,26 +82,11 @@ public class AdapterRegistro  extends  RecyclerView.Adapter<AdapterRegistro.View
             tvDia.setText(dayFormat.format(r.getFecha()).replace(".", "").toUpperCase());
             tvHora.setText(hourFormat.format(r.getFecha()));
             double comparacion = position != 0 && position != listRegistros.size() ? listRegistros.get(position).getPeso() - listRegistros.get(position - 1).getPeso() : listRegistros.get(position).getPeso();
-            double imc = FormulasUtils.getImc(r.getPeso(), 171);
+            double imc = FormulasUtils.getImc(r.getPeso(), p.getEstatura());
             tvImc.setText(String.format("%1.2f", imc).concat(" IMC"));
-            tvComparacion.setText(comparacion > 0 ? "+" + String.format("%1.2f", comparacion) : "-" + String.format("%1.2f", comparacion));
+            tvComparacion.setText(comparacion > 0 ? "+" + String.format("%1.2f", comparacion) :   String.format("%1.2f", comparacion));
+            imgArrow.setImageResource(comparacion>0? R.drawable.ic_flecha_arriba: R.drawable.ic_flecha_abajo);
 
-            /*
-            if (ENUM_OBJETIVO.fromValue(p.getObjetivo())!=null) {
-                switch (ENUM_OBJETIVO.fromValue(p.getObjetivo())) {
-                    case GANAR_PESO:
-                        if (comparacion < 0)
-                            tvComparacion.setTextColor(Color.RED);
-                        else
-                            tvComparacion.setTextColor(Color.GREEN);
-                    case PERDIDA_PESO:
-                        if (comparacion < 0)
-                            tvComparacion.setTextColor(Color.GREEN);
-                        else
-                            tvComparacion.setTextColor(Color.RED);
-                        break;
-                }
-            }*/
         }
 
     }

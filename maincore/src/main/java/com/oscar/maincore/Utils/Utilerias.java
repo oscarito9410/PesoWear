@@ -32,4 +32,6 @@ public class Utilerias {
         T[] arr = new Gson().fromJson(s, clazz);
         return Arrays.asList(arr);
     }
+
+
 }
