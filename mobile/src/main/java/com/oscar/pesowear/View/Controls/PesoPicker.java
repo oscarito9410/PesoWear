@@ -66,6 +66,14 @@ public class PesoPicker extends BasePicker implements NumberPicker.OnValueChange
        }
     }
 
+    @Override
+    public void setUnidad(String unidad) {
+        super.setUnidad(unidad);
+        if(tvUnidad!=null){
+            tvUnidad.setText(unidad);
+        }
+    }
+
     public void setPeso(double peso){
         String[] pesoString=String.valueOf(peso).split("\\.");
         if(pesoString.length>0){

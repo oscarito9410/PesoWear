@@ -1,4 +1,4 @@
-package com.oscar.pesowear.Data;
+package com.oscar.pesowear.Model;
 
 import com.oscar.maincore.Utils.EstatusDescription;
 
@@ -14,6 +14,7 @@ public class IMCResult {
     private String fechaIncio;
     private String fechaFin;
     private EstatusDescription estatusDescription;
+    private String unidadMedida;
 
 
 
@@ -89,9 +90,17 @@ public class IMCResult {
 
     public void setFechaFin(String fechaFin) {
         this.fechaFin = fechaFin;
-    }    @Override
+    }
 
+    public String getUnidadMedida() {
+        return unidadMedida;
+    }
 
+    public void setUnidadMedida(String unidadMedida) {
+        this.unidadMedida = unidadMedida;
+    }
+
+    @Override
     public String toString() {
         return "IMCResult{" +
                 "pesoInicio=" + pesoInicio +

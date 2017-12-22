@@ -2,7 +2,6 @@ package com.oscar.pesowear.Presenter;
 import android.support.annotation.StringRes;
 import com.oscar.maincore.MVP.Presenter.BasePresenterImpl;
 import com.oscar.maincore.MVP.View.BaseView;
-import com.oscar.pesowear.Data.Perfil;
 import com.oscar.pesowear.Interactor.DataBaseInteractor;
 import com.oscar.pesowear.R;
 

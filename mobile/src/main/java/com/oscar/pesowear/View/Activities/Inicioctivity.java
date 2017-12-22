@@ -28,13 +28,13 @@ public class Inicioctivity extends BaseWeareableActivity implements BottomNaviga
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        super.onOptionsItemSelected(item);
+        super.onNavigationItemSelected(item);
         switch (item.getItemId()){
             case R.id.navigation_home:
-                navegarFragmento(new FragmentListaRegistro(),FragmentListaRegistro.TAG,false,false);
+                navegarFragmento(new FragmentIMC(), FragmentIMC.TAG,false,false);
                 break;
-          default:
-              navegarFragmento(new FragmentIMC(), FragmentIMC.TAG,false,false);
+            case R.id.navigation_log:
+                navegarFragmento(new FragmentListaRegistro(),FragmentListaRegistro.TAG,false,false);
               break;
         }
         return true;
@@ -54,9 +54,6 @@ public class Inicioctivity extends BaseWeareableActivity implements BottomNaviga
             case R.id.action_add:
                 startActivity(new Intent(this, RegistroActivity.class));
                 break;
-            case R.id.action_profile:
-                startActivity(new Intent(this,PerfilActivity.class));
-                break;
         }
         return true;
     }
@@ -67,7 +64,7 @@ public class Inicioctivity extends BaseWeareableActivity implements BottomNaviga
         if(backStack){
             ft.addToBackStack(Tag);
         }
-        ft.commit();
+        ft.commitAllowingStateLoss();
     }
 
 }

@@ -1,4 +1,4 @@
-package com.oscar.pesowear.Data;
+package com.oscar.pesowear.Model;
 
 import com.raizlabs.android.dbflow.annotation.Database;
 

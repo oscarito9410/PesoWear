@@ -1,4 +1,4 @@
-package com.oscar.pesowear.Data;
+package com.oscar.pesowear.Model;
 import com.oscar.maincore.Data.RegistroCore;
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.NotNull;

@@ -2,12 +2,12 @@ package com.oscar.pesowear.Presenter;
 import com.github.mikephil.charting.data.Entry;
 import com.oscar.maincore.MVP.Presenter.BasePresenterImpl;
 import com.oscar.maincore.MVP.View.BaseView;
-import com.oscar.maincore.Utils.ENUM_OBJETIVO;
-import com.oscar.pesowear.Data.Perfil;
-import com.oscar.pesowear.Data.Registro;
+import com.oscar.pesowear.Model.Perfil;
+import com.oscar.pesowear.Model.Registro;
 import com.oscar.pesowear.Interactor.DataBaseInteractor;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -30,12 +30,11 @@ public class ConsultaPresenterImpl extends BasePresenterImpl implements Consulta
 
     @Override
     public void obtenerRegistros() {
-        int c=0;
-        for (Registro r: interactor.obtenerListRegistros()){
-            listEntries.add(new Entry(c, (float)r.getPeso()));
-            c++;
+        List<Registro>listRegistros=interactor.obtenerListRegistros();
+        Collections.reverse(listRegistros);
+        for(int j=0;j<listRegistros.size();j++){
+            listEntries.add(new Entry(j, (float)listRegistros.get(j).getPeso()));
         }
-
         if(view!=null){
             view.setListRegistros(interactor.obtenerListRegistros());
             view.setListEntriesChart(listEntries);

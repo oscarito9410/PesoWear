@@ -1,10 +1,8 @@
 package com.oscar.pesowear.View.Fragments;
 
 import android.app.Activity;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,16 +10,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.oscar.pesowear.Data.Perfil;
-import com.oscar.pesowear.Data.Registro;
-import com.oscar.pesowear.Interactor.DataBaseInteractor;
+import com.oscar.pesowear.Model.Perfil;
+import com.oscar.pesowear.Model.Registro;
 import com.oscar.pesowear.Presenter.ConsultaPresenter;
 import com.oscar.pesowear.Presenter.ConsultaPresenterImpl;
 import com.oscar.pesowear.R;

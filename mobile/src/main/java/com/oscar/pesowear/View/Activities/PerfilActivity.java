@@ -6,11 +6,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.aakira.expandablelayout.ExpandableLayout;
-import com.oscar.pesowear.Data.Perfil;
+import com.oscar.pesowear.Model.Perfil;
 import com.oscar.pesowear.Presenter.PerfilPresenter;
 import com.oscar.pesowear.Presenter.PerfilPresenterImpl;
 import com.oscar.pesowear.R;
@@ -25,14 +27,12 @@ import butterknife.ButterKnife;
 
 public class PerfilActivity extends BaseWeareableActivity implements PerfilPresenterImpl.ViewPerfil {
     private PerfilPresenter presenter;
-
     @BindView(R.id.imageArrowUnidad)
     ImageView imageArrowUnidad;
     @BindView(R.id.imageArrowActual)
     ImageView imageArrowActual;
     @BindView(R.id.imageArrowObjetivo)
     ImageView imageArrowObjetivo;
-
     @BindView(R.id.expandableUnidad)
     ExpandableLayout expandableUnidad;
     @BindView(R.id.expandableActual)
@@ -53,7 +53,12 @@ public class PerfilActivity extends BaseWeareableActivity implements PerfilPrese
     TextView tvObjetivo;
     @BindView(R.id.tvEstatura)
     TextView tvEstatura;
-
+    @BindView(R.id.rdKg)
+    RadioButton rdKg;
+    @BindView(R.id.rdLibras)
+    RadioButton rdLibras;
+    @BindView(R.id.rdGroup)
+    RadioGroup rdGroup;
     @BindView(R.id.imageArrowEstatura)
     ImageView imageArrowEstatura;
 
@@ -117,8 +122,20 @@ public class PerfilActivity extends BaseWeareableActivity implements PerfilPrese
 
     @Override
     public void setListeners() {
-        expandableUnidad.setListener(new ExpandableListenerCustom(this.imageArrowUnidad));
 
+        rdGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
+                if(checkedId==rdKg.getId()){
+                    presenter.setUnidadMedida("Kg");
+                }
+                else if(checkedId==rdLibras.getId()){
+                    presenter.setUnidadMedida("Lb");
+                }
+            }
+        });
+
+        expandableUnidad.setListener(new ExpandableListenerCustom(this.imageArrowUnidad));
         expandableEstatura.setListener(new ExpandableListenerCustom(this.imageArrowEstatura){
             @Override
             public void onClosed() {
@@ -204,10 +221,16 @@ public class PerfilActivity extends BaseWeareableActivity implements PerfilPrese
     @Override
     public void setPerfil(Perfil p) {
         pesoPickerObjetivo.setPeso(p.getPesoObjetivo());
+        pesoPickerObjetivo.setUnidad(p.getUnidadMedida());
         pesoPickerActual.setPeso(p.getPesoInicio());
+        pesoPickerActual.setUnidad(p.getUnidadMedida());
         alturaPicker.setAltura(p.getEstatura());
         tvObjetivo.setText(getString(R.string.peso_objetivo, String.valueOf(p.getPesoObjetivo()),p.getUnidadMedida()));
         tvEstatura.setText(getString(R.string.estatura_actual, String.valueOf(p.getEstatura()), presenter.getUnidadMedidaAltura()));
         tvPesoActual.setText(getString(R.string.peso_actual, String.valueOf(p.getPesoInicio()), presenter.getUnidadMedida()));
+        if(p.getUnidadMedida().equalsIgnoreCase("kg"))
+            rdKg.setChecked(true);
+        else
+            rdLibras.setChecked(false);
     }
 }

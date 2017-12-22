@@ -1,11 +1,12 @@
 package com.oscar.pesowear.Presenter;
 
 import android.support.annotation.StringRes;
+import android.text.TextUtils;
 
 import com.oscar.maincore.MVP.Presenter.BasePresenterImpl;
 import com.oscar.maincore.MVP.View.BaseView;
 import com.oscar.maincore.Utils.ENUM_OBJETIVO;
-import com.oscar.pesowear.Data.Perfil;
+import com.oscar.pesowear.Model.Perfil;
 import com.oscar.pesowear.Interactor.DataBaseInteractor;
 import com.oscar.pesowear.R;
 
@@ -18,7 +19,7 @@ public  class PerfilPresenterImpl extends BasePresenterImpl implements  PerfilPr
     private boolean isHideActual=true, isHideObjetivo=true, isHideEstatura;
     private double pesoActual;
     private double pesoObjetivo;
-    private String unidadMedida="KG";
+    private String unidadMedida;
     private DataBaseInteractor interactor;
     private int altura;
     private ViewPerfil view;
@@ -120,15 +121,16 @@ public  class PerfilPresenterImpl extends BasePresenterImpl implements  PerfilPr
             view.onError(R.string.ingresa_peso_objetivo);
         }else if(getAltura()==0){
             view.onError(R.string.ingres_tu_estatura);
-        }
-        else {
+        } else if (TextUtils.isEmpty(getUnidadMedida())) {
+            view.onError(R.string.ingresa_unidad_medida);
+        } else {
             ENUM_OBJETIVO objetivo;
             if (pesoActual >= pesoObjetivo)
                 objetivo = ENUM_OBJETIVO.PERDIDA_PESO;
             else
                 objetivo = ENUM_OBJETIVO.GANAR_PESO;
-           boolean update= interactor.agregarActualizarPerfil("Oscar Emilio", objetivo, getPesoActual(),
-                    getPesoObjetivo(), getAltura(), unidadMedida);
+            boolean update = interactor.agregarActualizarPerfil("Oscar Emilio", objetivo, getPesoActual(),
+                    getPesoObjetivo(), getAltura(), getUnidadMedida());
 
             view.onPerfilSaved(update ? R.string.perfil_actualizado : R.string.perfil_guardado);
         }
@@ -141,11 +143,13 @@ public  class PerfilPresenterImpl extends BasePresenterImpl implements  PerfilPr
                 this.setPesoActual(p.getPesoInicio());
                 this.setPesoObjetivo(p.getPesoObjetivo());
                 this.setAltura(p.getEstatura());
+                this.setUnidadMedida(p.getUnidadMedida());
                 view.setPerfil(p);
         }
         else{
             this.setPesoActual(75d);
             this.setPesoObjetivo(70d);
+            this.setUnidadMedida("KG");
             this.setAltura(170);
         }
     }

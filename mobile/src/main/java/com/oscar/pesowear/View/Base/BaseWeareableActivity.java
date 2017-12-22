@@ -1,13 +1,18 @@
 package com.oscar.pesowear.View.Base;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -15,31 +20,28 @@ import com.google.android.gms.wearable.MessageApi;
 import com.google.android.gms.wearable.Node;
 import com.google.android.gms.wearable.NodeApi;
 import com.google.android.gms.wearable.Wearable;
-import com.oscar.maincore.Data.RegistroCore;
-import com.oscar.maincore.Utils.Constants;
-import com.oscar.maincore.Utils.Utilerias;
-import com.oscar.pesowear.Data.Registro;
 import com.oscar.pesowear.R;
-import com.raizlabs.android.dbflow.sql.language.SQLite;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.oscar.pesowear.View.Activities.PerfilActivity;
 
 /**
  * Created by oemy9 on 09/12/2017.
  */
 
-public class BaseWeareableActivity extends AppCompatActivity implements  GoogleApiClient.ConnectionCallbacks,  GoogleApiClient.OnConnectionFailedListener {
+public class BaseWeareableActivity extends AppCompatActivity implements  GoogleApiClient.ConnectionCallbacks,  GoogleApiClient.OnConnectionFailedListener, NavigationView.OnNavigationItemSelectedListener {
     private static final String TAG = "BaseWeareableActivity";
     private GoogleApiClient googleClient;
     private Toolbar toolbar;
+    private DrawerLayout drawer;
+    private String currentTitle;
+    private ActionBarDrawerToggle toggle;
 
-    protected void setToolbar(@StringRes int resource, boolean setDefaultHome){
-        setToolBar(getString(resource),setDefaultHome);
+    protected Toolbar setToolbar(@StringRes int resource, boolean setDefaultHome){
+      return setToolBar(getString(resource),setDefaultHome);
     }
 
-    protected   void setToolBar(String texto, boolean setDefaultHome){
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+    protected   Toolbar setToolBar(String texto, boolean setDefaultHome){
+        this.toolbar = (Toolbar) findViewById(R.id.toolbar);
+        this.currentTitle=texto;
         if(toolbar!=null) {
             setSupportActionBar(toolbar);
             if (getSupportActionBar() != null && setDefaultHome) {
@@ -47,8 +49,33 @@ public class BaseWeareableActivity extends AppCompatActivity implements  GoogleA
                 getSupportActionBar().setDisplayShowHomeEnabled(true);
             }
         }
+        return this.toolbar;
     }
 
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        this.drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer != null) {
+            Toolbar toolbar = setToolBar(this.currentTitle, true);
+            toggle = new ActionBarDrawerToggle(this, drawer, toolbar,R.string.abierto,R.string.cerrado);
+            drawer.setDrawerListener(toggle);
+            toggle.syncState();
+            NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+            navigationView.setNavigationItemSelectedListener(this);
+            View headerView = navigationView.getHeaderView(0);
+        }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.nav_configuracion:
+                startActivity(new Intent(this, PerfilActivity.class));
+                break;
+        }
+        return true;
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -106,8 +133,6 @@ public class BaseWeareableActivity extends AppCompatActivity implements  GoogleA
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
-
-
     class SendToDataLayerThread extends Thread {
         String path;
         String message;

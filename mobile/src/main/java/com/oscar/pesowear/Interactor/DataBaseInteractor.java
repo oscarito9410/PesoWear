@@ -1,8 +1,8 @@
 package com.oscar.pesowear.Interactor;
 import com.oscar.maincore.Utils.ENUM_OBJETIVO;
-import com.oscar.pesowear.Data.Perfil;
-import com.oscar.pesowear.Data.Registro;
-import com.oscar.pesowear.Data.Registro_Table;
+import com.oscar.pesowear.Model.Perfil;
+import com.oscar.pesowear.Model.Registro;
+import com.oscar.pesowear.Model.Registro_Table;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import java.util.Calendar;

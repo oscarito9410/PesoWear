@@ -43,10 +43,12 @@
         app:ael_orientation="vertical">
 
         <RadioGroup
+            android:id="@+id/rdGroup"
             android:layout_width="match_parent"
             android:layout_height="100dp">
 
             <RadioButton
+                android:id="@+id/rdKg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
@@ -54,10 +56,11 @@
                 android:textSize="18sp" />
 
             <RadioButton
+                android:id="@+id/rdLibras"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
-                android:text="Pies, pulgadas"
+                android:text="Libras"
                 android:textSize="18sp" />
         </RadioGroup>
     </com.github.aakira.expandablelayout.ExpandableLinearLayout>

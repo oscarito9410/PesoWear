@@ -6,13 +6,12 @@ import com.oscar.maincore.Utils.Constants;
 import com.oscar.maincore.Utils.EstatusDescription;
 import com.oscar.maincore.Utils.FormulasUtils;
 import com.oscar.pesowear.ApplicationBase;
-import com.oscar.pesowear.Data.IMCResult;
-import com.oscar.pesowear.Data.Perfil;
-import com.oscar.pesowear.Data.Registro;
+import com.oscar.pesowear.Model.IMCResult;
+import com.oscar.pesowear.Model.Perfil;
+import com.oscar.pesowear.Model.Registro;
 import com.oscar.pesowear.Interactor.DataBaseInteractor;
 
 import java.text.SimpleDateFormat;
-import java.util.HashMap;
 
 /**
  * Created by oemy9 on 19/12/2017.
@@ -42,6 +41,7 @@ public class IMCPresenterImpl  extends BasePresenterImpl implements  IMCPresente
                IMCResult result = new IMCResult(p.getPesoInicio(), r!=null?r.getPeso(): p.getPesoObjetivo(), IMC);
                result.setPesoObjetivo(p.getPesoObjetivo());
                result.setEstatusDescription(description);
+               result.setUnidadMedida(p.getUnidadMedida());
                result.setFechaIncio(dt.format(p.getFechaInicio()));
                view.onIMCResult(result);
        }

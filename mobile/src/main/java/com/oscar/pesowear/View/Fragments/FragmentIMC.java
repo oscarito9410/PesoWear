@@ -1,6 +1,7 @@
 package com.oscar.pesowear.View.Fragments;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
@@ -9,8 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.github.anastr.speedviewlib.SpeedView;
-import com.github.anastr.speedviewlib.components.note.TextNote;
-import com.oscar.pesowear.Data.IMCResult;
+import com.oscar.pesowear.Model.IMCResult;
 import com.oscar.pesowear.Presenter.IMCPresenter;
 import com.oscar.pesowear.Presenter.IMCPresenterImpl;
 import com.oscar.pesowear.R;
@@ -37,6 +37,10 @@ public class FragmentIMC extends FragmentBase implements IMCPresenterImpl.IMCVie
     TextView tvFechaPesoActual;
     @BindView(R.id.tvPesoRestante)
     TextView tvPesoRestante;
+    @BindView(R.id.tvUnidad)
+    TextView tvUnidad;
+    @BindView(R.id.tvUnidadObjetivo)
+    TextView tvUnidadObjetivo;
 
 
     @Nullable
@@ -57,9 +61,11 @@ public class FragmentIMC extends FragmentBase implements IMCPresenterImpl.IMCVie
         speedView.setSpeedAt(Float.parseFloat(result.getImc().toString()));
         tvPesoActual.setText(String.valueOf(result.getPesoActual()));
         tvPesoObjetivo.setText(String.valueOf(result.getPesoObjetivo()));
-        tvEstatusIMC.setText(result.getEstatusDescription().getDescription());
-        tvEstatusIMC.setTextColor(ContextCompat.getColor(getContext(),result.getEstatusDescription().getColor()));
+        tvEstatusIMC.setText(result.getEstatusDescription()!=null?result.getEstatusDescription().getDescription():"");
+        tvEstatusIMC.setTextColor(result.getEstatusDescription()!=null?  ContextCompat.getColor(getContext(),result.getEstatusDescription().getColor()): Color.BLACK);
         tvFechaPesoActual.setText(result.getFechaIncio());
+        tvUnidad.setText(result.getUnidadMedida());
+        tvUnidadObjetivo.setText(result.getUnidadMedida());
         tvPesoRestante.setText(String.valueOf(result.getPesoRestante()));
     }
 
