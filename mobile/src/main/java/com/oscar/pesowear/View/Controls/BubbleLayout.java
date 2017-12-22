@@ -19,6 +19,7 @@ public class BubbleLayout extends RelativeLayout {
     private Drawable icon;
     private String text;
     private TextView tvTitulo;
+    private boolean textChanged=false;
 
     public BubbleLayout(Context context) {
         super(context);
@@ -54,9 +55,7 @@ public class BubbleLayout extends RelativeLayout {
         if(getIcon()!=null){
             imgBubble.setImageDrawable(getIcon());
         }
-        if(getText()!=null){
-            tvTitulo.setText(getText());
-        }
+        tvTitulo.setText(getText());
     }
 
     public Drawable getIcon() {
@@ -78,7 +77,16 @@ public class BubbleLayout extends RelativeLayout {
             this.text = text;
             if(tvTitulo!=null){
                 tvTitulo.setText(text);
+                textChanged=true;
             }
         }
+    }
+
+    public boolean isTextChanged() {
+        return textChanged;
+    }
+
+    public void setTextChanged(boolean textChanged) {
+        this.textChanged = textChanged;
     }
 }

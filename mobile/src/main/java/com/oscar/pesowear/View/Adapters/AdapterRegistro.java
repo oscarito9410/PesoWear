@@ -4,6 +4,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,6 +13,7 @@ import com.oscar.pesowear.Model.Perfil;
 import com.oscar.pesowear.Model.Registro;
 import com.oscar.pesowear.R;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import butterknife.BindView;
@@ -24,13 +27,31 @@ public class AdapterRegistro  extends  RecyclerView.Adapter<AdapterRegistro.View
 
     private List<Registro>listRegistros;
     private LayoutInflater layoutInflater;
-
     private SimpleDateFormat dayFormat=new SimpleDateFormat("dd MMM",new Locale("es"));
     private SimpleDateFormat hourFormat=new SimpleDateFormat("hh:mm aa");
     private Perfil perfil;
+    private boolean isDeleting=false;
+    private HashMap<Integer,Boolean>hashDelete=new HashMap<>();
+    public interface RegistroListener{
+        void onLongClickDeleteListener(boolean isDelete);
+        void onItemDeleteSelected(int count);
+    }
 
+    private RegistroListener listener;
 
-    public AdapterRegistro(Context ctx,List<Registro> listRegistros) {
+    public void setRegistroListener(RegistroListener listener) {
+        this.listener = listener;
+    }
+
+    public boolean isDeleting() {
+        return isDeleting;
+    }
+
+    public void setDeleting(boolean deleting) {
+        isDeleting = deleting;
+    }
+
+    public AdapterRegistro(Context ctx, List<Registro> listRegistros) {
         this.listRegistros = listRegistros;
         this.layoutInflater=LayoutInflater.from(ctx);
     }
@@ -56,45 +77,53 @@ public class AdapterRegistro  extends  RecyclerView.Adapter<AdapterRegistro.View
     }
 
     public class  ViewHolder extends RecyclerView.ViewHolder{
+        @BindView(R.id.checkEliminar)
+        CheckBox checkEliminar;
         @BindView(R.id.tvDia)
         TextView tvDia;
         @BindView(R.id.tvHora)
         TextView tvHora;
         @BindView(R.id.tvPeso)
         TextView tvPeso;
-        @BindView(R.id.tvComparacion)
-        TextView tvComparacion;
         @BindView(R.id.tvIMC)
         TextView tvImc;
+        @BindView(R.id.tvNotas)
+        TextView tvNotas;
         @BindView(R.id.imgArrow)
         ImageView imgArrow;
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
         }
-        public void bindInfo(Perfil p, int position) {
+        public void bindInfo(Perfil p, final int position) {
             Registro r = listRegistros.get(position);
             tvPeso.setText(String.valueOf(r.getPeso()) + p.getUnidadMedida());
             tvDia.setText(dayFormat.format(r.getFecha()).replace(".", "").toUpperCase());
             tvHora.setText(hourFormat.format(r.getFecha()));
-            try {
-                double comparacion = listRegistros.get(position).getPeso() - listRegistros.get( position!=0? position - 1: position + 1).getPeso();
-                listRegistros.get(position).getPeso();
-                imgArrow.setImageResource(comparacion > 0 ? R.drawable.ic_flecha_arriba : R.drawable.ic_flecha_abajo);
+            tvNotas.setText(r.getNotas()!=null? "Con notas":"");
+            double comparacion = listRegistros.get(position).getPeso() - listRegistros.get( position!=0? position - 1: position + 1).getPeso();
+            listRegistros.get(position).getPeso();
+            imgArrow.setImageResource(comparacion > 0 ? R.drawable.ic_flecha_arriba : R.drawable.ic_flecha_abajo);
+            checkEliminar.setVisibility(isDeleting()? View.VISIBLE: View.GONE);
+            checkEliminar.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
+                    hashDelete.put(position,checked);
 
-            }
-            catch (Exception ex){
-                ex.printStackTrace();
-                imgArrow.setImageResource(R.drawable.ic_arrow_up);
+                }
+            });
 
-            }
-
-            /*
-            double comparacion = position != 0 && position != listRegistros.size() ? listRegistros.get(position).getPeso() - listRegistros.get(position - 1).getPeso() : listRegistros.get(position).getPeso();
-            double imc = FormulasUtils.getImc(r.getPeso(), p.getEstatura());
-            tvImc.setText(String.format("%1.2f", imc).concat(" IMC"));
-            tvComparacion.setText(comparacion > 0 ? "+" + String.format("%1.2f", comparacion) :   String.format("%1.2f", comparacion));¨*/
-
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    setDeleting(!isDeleting());
+                    notifyDataSetChanged();
+                    if(listener!=null){
+                        listener.onLongClickDeleteListener(isDeleting());
+                    }
+                    return false;
+                }
+            });
         }
 
     }

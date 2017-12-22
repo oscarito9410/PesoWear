@@ -8,6 +8,8 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.DatePicker;
+import android.widget.Toast;
+
 import com.oscar.pesowear.Presenter.RegistroPesoPresenter;
 import com.oscar.pesowear.Presenter.RegistroPesoPresenterImpl;
 import com.oscar.pesowear.R;
@@ -66,7 +68,7 @@ public class RegistroActivity extends BaseWeareableActivity implements
         super.onOptionsItemSelected(item);
         switch (item.getItemId()){
             case R.id.action_save:
-                presenter.agregarPeso(pesoPicker.getPeso(),bubbleNotas.getText());
+                presenter.agregarPeso(pesoPicker.getPeso(),bubbleNotas.isTextChanged()?bubbleNotas.getText(): null);
                 break;
         }
         return true;
@@ -121,8 +123,12 @@ public class RegistroActivity extends BaseWeareableActivity implements
     }
 
     @Override
-    public void setErrorFecha(@StringRes  int error) {
+    public void onSuccessRegistro(int mensaje) {
+        Toast.makeText(this, getString(mensaje), Toast.LENGTH_SHORT).show();
+    }
 
+    @Override
+    public void setErrorFecha(@StringRes  int error) {
     }
 
     @Override

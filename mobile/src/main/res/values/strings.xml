@@ -22,4 +22,6 @@
     <string name="abierto">Abierto</string>
     <string name="ingresa_unidad_medida">Ingresa unidad de medida</string>
     <string name="faltan">Te faltan  %1$s %2$s </string>
+    <string name="registro_guardado">Registro guardado correctamente</string>
+    <string name="peso">Peso</string>
 </resources>

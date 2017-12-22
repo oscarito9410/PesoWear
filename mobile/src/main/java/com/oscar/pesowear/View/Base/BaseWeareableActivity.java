@@ -1,5 +1,8 @@
 package com.oscar.pesowear.View.Base;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -65,6 +68,16 @@ public class BaseWeareableActivity extends AppCompatActivity implements  GoogleA
             navigationView.setNavigationItemSelectedListener(this);
             View headerView = navigationView.getHeaderView(0);
         }
+    }
+
+    public  void showDialogOk(Context context, String title, String message, DialogInterface.OnClickListener okListener) {
+        new AlertDialog.Builder(context)
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton(context.getString(R.string.aceptar), okListener)
+                .setNegativeButton(context.getString(R.string.cancelar), okListener)
+                .create()
+                .show();
     }
 
     @Override

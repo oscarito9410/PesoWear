@@ -20,8 +20,17 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
+            <CheckBox
+                android:id="@+id/checkEliminar"
+                android:visibility="gone"
+                android:layout_centerVertical="true"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+
+
             <TextView
                 android:id="@+id/tvDia"
+                android:layout_toRightOf="@+id/checkEliminar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="15 ABR"
@@ -33,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvDia"
-                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/checkEliminar"
                 android:text="8:00 PM"
                 android:textAlignment="center"
                 android:textAppearance="?android:textAppearanceSmall"
@@ -52,15 +61,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="65.5"
+                android:layout_gravity="center_horizontal"
                 android:textAppearance="?android:textAppearanceLarge" />
 
             <TextView
-                android:id="@+id/tvUnidad"
+                android:id="@+id/tvNotas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tvDia"
-                android:layout_centerVertical="true"
+                android:layout_gravity="center_horizontal"
                 android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
                 android:textAppearance="?android:textAppearanceSmall" />
         </LinearLayout>
 

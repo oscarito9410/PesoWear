@@ -58,7 +58,8 @@ public class FragmentIMC extends FragmentBase implements IMCPresenterImpl.IMCVie
 
     @Override
     public void onIMCResult(IMCResult result) {
-        speedView.setSpeedAt(Float.parseFloat(result.getImc().toString()));
+        speedView.setSpeedAt(0);
+        speedView.speedTo(Float.parseFloat(result.getImc().toString()),500);
         tvPesoActual.setText(String.valueOf(result.getPesoActual()));
         tvPesoObjetivo.setText(String.valueOf(result.getPesoObjetivo()));
         tvEstatusIMC.setText(result.getEstatusDescription()!=null?result.getEstatusDescription().getDescription():"");

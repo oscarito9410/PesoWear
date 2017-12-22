@@ -50,6 +50,7 @@ public class RegistroPesoPresenterImpl extends BasePresenterImpl implements Regi
     public void agregarPeso(Double peso, String nota) {
         if (selectedFecha != null) {
             interactor.agregarRegistroPeso(peso,selectedFecha,nota);
+            view.onSuccessRegistro(R.string.registro_guardado);
         }
         else {
                 view.setErrorFecha(R.string.error_prueba);
@@ -75,6 +76,7 @@ public class RegistroPesoPresenterImpl extends BasePresenterImpl implements Regi
 
     public interface RegistroView extends BaseView
     {
+        void onSuccessRegistro(@StringRes int mensaje);
         void setErrorFecha(@StringRes int error);
         void setFechaValue(String value);
         void pesoInicial(double peso);

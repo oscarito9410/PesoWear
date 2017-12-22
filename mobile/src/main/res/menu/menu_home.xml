@@ -4,8 +4,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/action_delete"
+        android:title="Delete"
+        android:icon="@drawable/ic_delete"
+        app:showAsAction="always|withText"
+        android:visible="false" />
+
+    <item
         android:id="@+id/action_add"
         android:title="Agregar"
         android:icon="@drawable/ic_add"
         app:showAsAction="always" />
+
 </menu>
