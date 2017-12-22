@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,21 +8,30 @@
     tools:context="com.oscar.pesowear.View.Activities.PerfilActivity">
 
     <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <include layout="@layout/toolbar"/>
     </android.support.design.widget.AppBarLayout>
 
     <TextView
+        android:id="@+id/tvHola"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/hola"/>
+        android:text="@string/hola"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/appBarLayout"
+        android:gravity="center_horizontal"/>
     <TextView
+        android:id="@+id/tvPorFavor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:gravity="center_horizontal"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/bienvenido"/>
+        android:text="@string/bienvenido"
+        android:layout_below="@+id/tvHola"/>
 
 
     <LinearLayout
@@ -32,6 +41,7 @@
         android:background="@drawable/shape_background_azul"
         android:onClick="onClickUnidad"
         android:orientation="horizontal"
+        android:layout_below="@+id/tvPorFavor"
         android:layout_marginTop="5dp">
 
         <TextView
@@ -43,37 +53,49 @@
         <ImageView
             android:id="@+id/imageArrowUnidad"
             style="@style/imageFAQ"
-            android:src="@drawable/ic_arrow_down" />
+            android:src="@mipmap/ic_arrow_right_white" />
     </LinearLayout>
 
     <com.github.aakira.expandablelayout.ExpandableLinearLayout
         android:id="@+id/expandableUnidad"
         style="@style/exapandible"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:onClick="onClickUnidad"
-        app:ael_expanded="true"
+        android:layout_below="@+id/faqCuentaUnidad"
+        app:ael_expanded="false"
         app:ael_orientation="vertical">
 
         <RadioGroup
             android:id="@+id/rdGroup"
             android:layout_width="match_parent"
-            android:layout_height="80dp">
+            android:layout_height="wrap_content">
 
             <RadioButton
                 android:id="@+id/rdKg"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
                 android:text="Kilogramos"
-                android:textSize="18sp" />
+                android:textColor="@android:color/white"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:background="@drawable/radio_background"/>
 
             <RadioButton
                 android:id="@+id/rdLibras"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
                 android:text="Libras"
-                android:textSize="18sp" />
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:background="@drawable/radio_background"
+                android:layout_marginBottom="10dp"/>
         </RadioGroup>
     </com.github.aakira.expandablelayout.ExpandableLinearLayout>
 
@@ -83,7 +105,8 @@
         android:layout_height="wrap_content"
         android:background="@drawable/shape_background_azul"
         android:onClick="onClickEstatura"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_below="@+id/expandableUnidad">
 
         <TextView
             android:id="@+id/tvEstatura"
@@ -95,14 +118,15 @@
         <ImageView
             android:id="@+id/imageArrowEstatura"
             style="@style/imageFAQ"
-            android:src="@drawable/ic_arrow_down" />
+            android:src="@mipmap/ic_arrow_right_white" />
     </LinearLayout>
 
     <com.github.aakira.expandablelayout.ExpandableLinearLayout
         android:id="@+id/expandableEstatura"
         style="@style/exapandible"
         app:ael_expanded="false"
-        app:ael_orientation="vertical">
+        app:ael_orientation="vertical"
+        android:layout_below="@+id/faqEstatura">
 
         <com.oscar.pesowear.View.Controls.AlturaPicker
             android:id="@+id/alturaPicker"
@@ -120,7 +144,8 @@
         android:layout_height="wrap_content"
         android:background="@drawable/shape_background_azul"
         android:onClick="onClickActual"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_below="@+id/expandableEstatura">
 
         <TextView
             android:id="@+id/tvPesoActual"
@@ -132,14 +157,15 @@
         <ImageView
             android:id="@+id/imageArrowActual"
             style="@style/imageFAQ"
-            android:src="@drawable/ic_arrow_down" />
+            android:src="@mipmap/ic_arrow_right_white" />
     </LinearLayout>
 
     <com.github.aakira.expandablelayout.ExpandableLinearLayout
         android:id="@+id/expandableActual"
         style="@style/exapandible"
         app:ael_expanded="false"
-        app:ael_orientation="vertical">
+        app:ael_orientation="vertical"
+        android:layout_below="@+id/faqActual">
 
         <com.oscar.pesowear.View.Controls.PesoPicker
             android:id="@+id/pesoPickerActual"
@@ -155,7 +181,8 @@
         android:layout_height="wrap_content"
         android:background="@drawable/shape_background_azul"
         android:onClick="onClickObjetivo"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_below="@+id/expandableActual">
 
         <TextView
             android:id="@+id/tvObjetivo"
@@ -167,14 +194,15 @@
         <ImageView
             android:id="@+id/imageArrowObjetivo"
             style="@style/imageFAQ"
-            android:src="@drawable/ic_arrow_down" />
+            android:src="@mipmap/ic_arrow_right_white" />
     </LinearLayout>
 
     <com.github.aakira.expandablelayout.ExpandableLinearLayout
         android:id="@+id/expandableObjetivo"
         style="@style/exapandible"
         app:ael_expanded="false"
-        app:ael_orientation="vertical">
+        app:ael_orientation="vertical"
+        android:layout_below="@+id/faqObjetivo">
 
         <com.oscar.pesowear.View.Controls.PesoPicker
             android:id="@+id/pesoPickerObjetivo"
@@ -184,4 +212,4 @@
             android:layout_marginTop="20dp"></com.oscar.pesowear.View.Controls.PesoPicker>
     </com.github.aakira.expandablelayout.ExpandableLinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
