@@ -13,6 +13,18 @@
         <include layout="@layout/toolbar"/>
     </android.support.design.widget.AppBarLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/hola"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/bienvenido"/>
+
+
     <LinearLayout
         android:id="@+id/faqCuentaUnidad"
         android:layout_width="match_parent"
@@ -20,7 +32,7 @@
         android:background="@drawable/shape_background_azul"
         android:onClick="onClickUnidad"
         android:orientation="horizontal"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="5dp">
 
         <TextView
             style="@style/textoFAQ"
@@ -37,7 +49,7 @@
     <com.github.aakira.expandablelayout.ExpandableLinearLayout
         android:id="@+id/expandableUnidad"
         style="@style/exapandible"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:onClick="onClickUnidad"
         app:ael_expanded="true"
         app:ael_orientation="vertical">
@@ -45,7 +57,7 @@
         <RadioGroup
             android:id="@+id/rdGroup"
             android:layout_width="match_parent"
-            android:layout_height="100dp">
+            android:layout_height="80dp">
 
             <RadioButton
                 android:id="@+id/rdKg"

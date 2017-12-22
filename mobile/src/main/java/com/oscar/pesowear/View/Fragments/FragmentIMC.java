@@ -66,7 +66,7 @@ public class FragmentIMC extends FragmentBase implements IMCPresenterImpl.IMCVie
         tvFechaPesoActual.setText(result.getFechaIncio());
         tvUnidad.setText(result.getUnidadMedida());
         tvUnidadObjetivo.setText(result.getUnidadMedida());
-        tvPesoRestante.setText(String.valueOf(result.getPesoRestante()));
+        tvPesoRestante.setText(getString(R.string.faltan,String.valueOf(result.getPesoRestante()),result.getUnidadMedida()));
     }
 
     @Override

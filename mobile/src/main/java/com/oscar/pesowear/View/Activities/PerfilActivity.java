@@ -231,6 +231,6 @@ public class PerfilActivity extends BaseWeareableActivity implements PerfilPrese
         if(p.getUnidadMedida().equalsIgnoreCase("kg"))
             rdKg.setChecked(true);
         else
-            rdLibras.setChecked(false);
+            rdLibras.setChecked(true);
     }
 }
