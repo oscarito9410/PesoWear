@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">PesoWear</string>
     <string name="hola">¡Hola!</string>
-    <string name="bienvenido">Bienvenido, por favor ingresa lo siguientes datos para poder llevar un registro de tus progresos</string>
+    <string name="bienvenido">Bienvenido, por favor ingresa lo siguientes datos para poder llevar un registro de tus progresos.</string>
     <string name="cancelar">cancelar</string>
     <string name="aceptar">aceptar</string>
     <string name="error_prueba">Prueba de error</string>
