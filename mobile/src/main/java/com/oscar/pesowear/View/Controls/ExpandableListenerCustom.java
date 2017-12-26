@@ -28,12 +28,12 @@ public class ExpandableListenerCustom implements ExpandableLayoutListener {
 
     @Override
     public void onPreOpen() {
-        imageArrow.setImageResource(R.drawable.ic_arrow_up);
+        imageArrow.setImageResource(R.mipmap.ic_arrow_dawn_white);
     }
 
     @Override
     public void onPreClose() {
-        imageArrow.setImageResource( R.drawable.ic_arrow_down);
+        imageArrow.setImageResource( R.mipmap.ic_arrow_right_white);
     }
 
     @Override
