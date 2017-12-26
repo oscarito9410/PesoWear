@@ -148,7 +148,7 @@ public class FragmentListaRegistro extends FragmentBase implements ConsultaPrese
                 });
                 break;
         }
-        return true;
+        return false;
     }
 
     @Override

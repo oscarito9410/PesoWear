@@ -1,7 +1,5 @@
 package com.oscar.pesowear.Presenter;
-
 import com.oscar.maincore.MVP.Presenter.BasePresenter;
-
 import java.util.Calendar;
 
 /**

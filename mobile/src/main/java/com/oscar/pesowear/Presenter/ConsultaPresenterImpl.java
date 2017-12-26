@@ -17,19 +17,18 @@ import java.util.List;
 public class ConsultaPresenterImpl extends BasePresenterImpl implements ConsultaPresenter {
 
     private ConsultaView view;
-    private List<Entry>listEntries;
     private DataBaseInteractor interactor;
 
     @Override
     public void register(BaseView view) {
         super.register(view);
         this.view=(ConsultaView)view;
-        this.listEntries=new ArrayList<>();
         this.interactor=new DataBaseInteractor();
     }
 
     @Override
     public void obtenerRegistros() {
+        List<Entry>listEntries=new ArrayList<>();
         List<Registro>listRegistros=interactor.obtenerListRegistros();
         Collections.reverse(listRegistros);
         for(int j=0;j<listRegistros.size();j++){

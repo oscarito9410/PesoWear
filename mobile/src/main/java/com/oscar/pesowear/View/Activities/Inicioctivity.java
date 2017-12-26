@@ -22,7 +22,7 @@ public class Inicioctivity extends BaseWeareableActivity implements BottomNaviga
         setContentView(R.layout.activity_inicio);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(this);
-        navegarFragmento(new FragmentListaRegistro(),FragmentListaRegistro.TAG,false,false);
+        navegarFragmento(new FragmentIMC(),FragmentIMC.TAG,false,false);
         setToolBar("Inicio",false);
     }
 
@@ -55,7 +55,7 @@ public class Inicioctivity extends BaseWeareableActivity implements BottomNaviga
                 startActivity(new Intent(this, RegistroActivity.class));
                 break;
         }
-        return true;
+        return false;
     }
 
     public void navegarFragmento(Fragment fragment, String  Tag, boolean backStack, boolean animation){

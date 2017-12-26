@@ -1,185 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/cardPesoActual"
-        android:layout_width="130dp"
-        android:layout_height="110dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        app:cardCornerRadius="@dimen/tarjeta_cardCornerRadius"
-        app:cardElevation="@dimen/tarjeta_cardElevation"
-        app:cardUseCompatPadding="true">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-
-            <TextView
-                android:id="@+id/tvPesoActualD"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:text="Peso actual"
-                android:textAlignment="center"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/tvPesoActual"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvPesoActualD"
-                android:layout_centerHorizontal="true"
-                android:text="67"
-                android:textColor="@color/colorPrimary"
-                android:textSize="40sp" />
-
-
-            <TextView
-                android:id="@+id/tvFechaPesoActual"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvPesoActual"
-                android:textAlignment="center"/>
-
-            <TextView
-                android:id="@+id/tvUnidad"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvPesoActualD"
-                android:layout_marginTop="20dp"
-                android:layout_toRightOf="@+id/tvPesoActual"
-                android:text="kg"
-                android:textColor="@color/colorPrimary" />
-        </RelativeLayout>
-
-
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/cardPesoObjetivo"
-        android:layout_width="130dp"
-        android:layout_height="110dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        app:cardCornerRadius="@dimen/tarjeta_cardCornerRadius"
-        app:cardElevation="@dimen/tarjeta_cardElevation"
-        app:cardUseCompatPadding="true">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/tvPesoObjetivoD"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:text="Peso objetivo"
-                android:textAlignment="center"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/tvPesoObjetivo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvPesoObjetivoD"
-                android:layout_centerHorizontal="true"
-                android:text="67"
-                android:textColor="@color/colorRojoIndicator"
-                android:textSize="40sp" />
-
-            <TextView
-                android:id="@+id/tvUnidadObjetivo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvPesoObjetivoD"
-                android:layout_marginTop="20dp"
-                android:layout_toRightOf="@+id/tvPesoObjetivo"
-                android:text="kg"
-                android:textColor="@color/colorRojoIndicator" />
-
-
-            <TextView
-                android:id="@+id/tvPesoRestante"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvPesoObjetivo"
-                android:textAlignment="center"
-                android:textColor="@color/colorRojoIndicator" />
-
-
-        </RelativeLayout>
-
-
-    </android.support.v7.widget.CardView>
-
-
-    <android.support.v7.widget.CardView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/cardPesoActual"
-        android:layout_marginTop="20dp"
-        app:cardUseCompatPadding="true">
+        android:layout_height="match_parent">
 
-        <RelativeLayout
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardPesoActual"
+            android:layout_width="130dp"
+            android:layout_height="110dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="@dimen/tarjeta_cardCornerRadius"
+            app:cardElevation="@dimen/tarjeta_cardElevation"
+            app:cardUseCompatPadding="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tvPesoActualD"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Peso actual"
+                    android:textAlignment="center"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvPesoActual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvPesoActualD"
+                    android:layout_centerHorizontal="true"
+                    android:text="67"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="40sp" />
+
+
+                <TextView
+                    android:id="@+id/tvFechaPesoActual"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvPesoActual"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/tvUnidad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvPesoActualD"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@+id/tvPesoActual"
+                    android:text="kg"
+                    android:textColor="@color/colorPrimary" />
+            </RelativeLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardPesoObjetivo"
+            android:layout_width="130dp"
+            android:layout_height="110dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="@dimen/tarjeta_cardCornerRadius"
+            app:cardElevation="@dimen/tarjeta_cardElevation"
+            app:cardUseCompatPadding="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tvPesoObjetivoD"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Peso objetivo"
+                    android:textAlignment="center"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvPesoObjetivo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvPesoObjetivoD"
+                    android:layout_centerHorizontal="true"
+                    android:text="67"
+                    android:textColor="@color/colorRojoIndicator"
+                    android:textSize="40sp" />
+
+                <TextView
+                    android:id="@+id/tvUnidadObjetivo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvPesoObjetivoD"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@+id/tvPesoObjetivo"
+                    android:text="kg"
+                    android:textColor="@color/colorRojoIndicator" />
+
+
+                <TextView
+                    android:id="@+id/tvPesoRestante"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvPesoObjetivo"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorRojoIndicator" />
+
+
+            </RelativeLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:layout_below="@+id/cardPesoActual"
+            android:layout_marginTop="20dp"
+            app:cardUseCompatPadding="true">
 
-
-            <TextView
-                android:id="@+id/tvIndice"
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Indice de masa corporal"
-                android:textAlignment="center"
-                android:textColor="@android:color/black"
-                android:textSize="20sp" />
+                android:layout_height="match_parent">
 
-            <com.github.anastr.speedviewlib.SpeedView
-                android:id="@+id/speedView"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvIndice"
-                android:layout_centerInParent="true"
-                android:layout_marginTop="12dp"
-                app:sv_highSpeedColor="@color/colorRojoIndicator"
-                app:sv_indicator="KiteIndicator"
-                app:sv_lowSpeedColor="@color/colorVerdeIndicator"
-                app:sv_lowSpeedPercent="20"
-                app:sv_maxSpeed="40"
-                app:sv_mediumSpeedColor="@color/colorNaranjaInidcator"
-                app:sv_mediumSpeedPercent="65"
-                app:sv_minSpeed="15"
-                app:sv_unit="IMC"
-                app:sv_withTremble="false" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
+                    <TextView
+                        android:id="@+id/tvIndice"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Indice de masa corporal"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/tvEstatusIMC"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/speedView"
-                android:layout_marginBottom="10dp"
-                android:textAlignment="center"
-                android:textAllCaps="true"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                    <com.github.anastr.speedviewlib.SpeedView
+                        android:id="@+id/speedView"
+                        android:layout_width="250dp"
+                        android:layout_height="300dp"
+                        android:layout_below="@+id/tvIndice"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="12dp"
+                        app:sv_highSpeedColor="@color/colorRojoIndicator"
+                        app:sv_indicator="KiteIndicator"
+                        app:sv_lowSpeedColor="@color/colorVerdeIndicator"
+                        app:sv_lowSpeedPercent="20"
+                        app:sv_maxSpeed="40"
+                        app:sv_mediumSpeedColor="@color/colorNaranjaInidcator"
+                        app:sv_mediumSpeedPercent="65"
+                        app:sv_minSpeed="15"
+                        app:sv_unit="IMC"
+                        app:sv_withTremble="false" />
 
 
-        </RelativeLayout>
+                    <TextView
+                        android:id="@+id/tvEstatusIMC"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/speedView"
+                        android:layout_marginBottom="10dp"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
 
-    </android.support.v7.widget.CardView>
+                </RelativeLayout>
+
+            </ScrollView>
 
 
-</RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+
+    </RelativeLayout>
+
+
+</ScrollView>

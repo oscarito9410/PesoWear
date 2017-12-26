@@ -31,7 +31,9 @@ public class AdapterRegistro  extends  RecyclerView.Adapter<AdapterRegistro.View
     private SimpleDateFormat hourFormat=new SimpleDateFormat("hh:mm aa");
     private Perfil perfil;
     private boolean isDeleting=false;
-    private HashMap<Integer,Boolean>hashDelete=new HashMap<>();
+    private Context ctx;
+
+
     public interface RegistroListener{
         void onLongClickDeleteListener(boolean isDelete);
         void onItemDeleteSelected(int count);
@@ -53,6 +55,7 @@ public class AdapterRegistro  extends  RecyclerView.Adapter<AdapterRegistro.View
 
     public AdapterRegistro(Context ctx, List<Registro> listRegistros) {
         this.listRegistros = listRegistros;
+        this.ctx=ctx;
         this.layoutInflater=LayoutInflater.from(ctx);
     }
 
@@ -100,15 +103,14 @@ public class AdapterRegistro  extends  RecyclerView.Adapter<AdapterRegistro.View
             tvPeso.setText(String.valueOf(r.getPeso()) + p.getUnidadMedida());
             tvDia.setText(dayFormat.format(r.getFecha()).replace(".", "").toUpperCase());
             tvHora.setText(hourFormat.format(r.getFecha()));
-            tvNotas.setText(r.getNotas()!=null? "Con notas":"");
-            double comparacion = listRegistros.get(position).getPeso() - listRegistros.get( position!=0? position - 1: position + 1).getPeso();
+            tvNotas.setText(r.getNotas()!=null? ctx.getString(R.string.con_notas):"");
+            double comparacion =listRegistros.size()>1? listRegistros.get(position).getPeso() - listRegistros.get( position!=0? position - 1: position + 1).getPeso():0;
             listRegistros.get(position).getPeso();
-            imgArrow.setImageResource(comparacion > 0 ? R.drawable.ic_flecha_arriba : R.drawable.ic_flecha_abajo);
+            imgArrow.setImageResource(comparacion  ==0 ? R.drawable.ic_flecha_abajo_azul: comparacion>0? R.drawable.ic_flecha_arriba : R.drawable.ic_flecha_abajo);
             checkEliminar.setVisibility(isDeleting()? View.VISIBLE: View.GONE);
             checkEliminar.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
-                    hashDelete.put(position,checked);
 
                 }
             });
