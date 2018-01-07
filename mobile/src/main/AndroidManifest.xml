@@ -12,16 +12,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".View.Activities.RegistroActivity" />
+        <activity android:name=".record.view.RecordActivity" />
         <activity
-            android:name=".View.Activities.Inicioctivity"
+            android:name=".home.view.HomeActivity"
             android:label="@string/title_activity_inicioctivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.Activities.PerfilActivity">
+        <activity android:name=".profile.view.ProfileActivity">
         </activity>
     </application>
 

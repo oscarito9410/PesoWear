@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.oscar.pesowear.View.Activities.PerfilActivity">
+    tools:context="com.oscar.pesowear.profile.view.ProfileActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -128,12 +128,12 @@
         app:ael_orientation="vertical"
         android:layout_below="@+id/faqEstatura">
 
-        <com.oscar.pesowear.View.Controls.AlturaPicker
+        <com.oscar.pesowear.Utils.utils.AlturaPicker
             android:id="@+id/alturaPicker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal">
-        </com.oscar.pesowear.View.Controls.AlturaPicker>
+        </com.oscar.pesowear.Utils.utils.AlturaPicker>
 
     </com.github.aakira.expandablelayout.ExpandableLinearLayout>
 
@@ -167,12 +167,12 @@
         app:ael_orientation="vertical"
         android:layout_below="@+id/faqActual">
 
-        <com.oscar.pesowear.View.Controls.PesoPicker
+        <com.oscar.pesowear.Utils.utils.PesoPicker
             android:id="@+id/pesoPickerActual"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"></com.oscar.pesowear.View.Controls.PesoPicker>
+            android:layout_marginTop="20dp"></com.oscar.pesowear.Utils.utils.PesoPicker>
     </com.github.aakira.expandablelayout.ExpandableLinearLayout>
 
     <LinearLayout
@@ -204,12 +204,12 @@
         app:ael_orientation="vertical"
         android:layout_below="@+id/faqObjetivo">
 
-        <com.oscar.pesowear.View.Controls.PesoPicker
+        <com.oscar.pesowear.Utils.utils.PesoPicker
             android:id="@+id/pesoPickerObjetivo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"></com.oscar.pesowear.View.Controls.PesoPicker>
+            android:layout_marginTop="20dp"></com.oscar.pesowear.Utils.utils.PesoPicker>
     </com.github.aakira.expandablelayout.ExpandableLinearLayout>
 
 </RelativeLayout>
