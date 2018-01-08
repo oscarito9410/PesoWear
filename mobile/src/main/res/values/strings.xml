@@ -24,5 +24,4 @@
     <string name="faltan">Te faltan  %1$s %2$s </string>
     <string name="registro_guardado">Registro guardado correctamente</string>
     <string name="peso">Peso</string>
-    <string name="title_home">Inicio</string>
 </resources>

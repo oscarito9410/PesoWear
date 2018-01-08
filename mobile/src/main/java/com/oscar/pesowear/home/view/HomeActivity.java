@@ -12,7 +12,7 @@ import android.view.MenuItem;
 import com.oscar.pesowear.R;
 import com.oscar.pesowear.record.view.RecordActivity;
 import com.oscar.pesowear.base.BaseWeareableActivity;
-import com.oscar.pesowear.imc.presenter.FragmentIMC;
+import com.oscar.pesowear.imc.view.FragmentIMC;
 import com.oscar.pesowear.weightQuery.view.FragmentWeightQuery;
 
 public class HomeActivity extends BaseWeareableActivity implements BottomNavigationView.OnNavigationItemSelectedListener, HomeView {
@@ -21,9 +21,9 @@ public class HomeActivity extends BaseWeareableActivity implements BottomNavigat
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(this);
-        navegarFragmento(new FragmentWeightQuery(), FragmentWeightQuery.TAG,false,false);
+        navigateIMC();
         setToolBar(getString(R.string.title_home),false);
     }
 

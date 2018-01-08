@@ -2,7 +2,7 @@ package com.oscar.pesowear.base;
 import com.oscar.maincore.Utils.ENUM_OBJETIVO;
 import com.oscar.pesowear.profile.model.Profile;
 import com.oscar.pesowear.record.model.Record;
-import com.oscar.pesowear.Model.Registro_Table;
+import com.oscar.pesowear.record.model.Record_Table;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import java.util.ArrayList;
@@ -65,11 +65,11 @@ public class DataBaseInteractor {
         }
     }
     public List<Record>obtenerListRegistros(){
-      return   SQLite.select().from(Record.class).orderBy(Registro_Table.fecha,false).queryList();
+      return   SQLite.select().from(Record.class).orderBy(Record_Table.fecha,false).queryList();
     }
 
     public Record obtenerLastRegistro(){
-        return  SQLite.select().from(Record.class).orderBy(Registro_Table.fecha,false).querySingle();
+        return  SQLite.select().from(Record.class).orderBy(Record_Table.fecha,false).querySingle();
     }
 
     public Profile obtenerPerfil(){
@@ -77,7 +77,7 @@ public class DataBaseInteractor {
     }
 
     public Record obtenerUltimoRegistro(){
-        return   SQLite.select().from(Record.class).orderBy(Registro_Table.fecha,false).querySingle();
+        return   SQLite.select().from(Record.class).orderBy(Record_Table.fecha,false).querySingle();
 
     }
 }

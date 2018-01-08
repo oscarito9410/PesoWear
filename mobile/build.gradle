@@ -58,6 +58,8 @@ dependencies {
     compile "com.facebook.stetho:stetho:${rootProject.ext.stetho}"
     compile 'com.numetriclabz.numandroidcharts:numandroidcharts:1.0.12'
     compile 'com.github.anastr:speedviewlib:1.1.6'
+    compile 'com.google.dagger:dagger:2.10'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.10'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     compile project(':maincore')

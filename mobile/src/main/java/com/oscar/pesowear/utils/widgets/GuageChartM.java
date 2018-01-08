@@ -1,4 +1,4 @@
-package com.oscar.pesowear.Utils.utils;
+package com.oscar.pesowear.utils.utils.widgets;
 
 /**
  * Created by oemy9 on 19/12/2017.

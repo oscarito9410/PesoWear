@@ -16,7 +16,7 @@
     </android.support.design.widget.AppBarLayout>
 
 
-    <com.oscar.pesowear.Utils.utils.BubbleLayout
+    <com.oscar.pesowear.utils.utils.widgets.BubbleLayout
         android:id="@+id/bubbleCalendar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
         app:text="Fecha de día de hoy" />
 
 
-    <com.oscar.pesowear.Utils.utils.BubbleLayout
+    <com.oscar.pesowear.utils.utils.widgets.BubbleLayout
         android:id="@+id/bubbleNotas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
         app:text="Notas" />
 
 
-    <com.oscar.pesowear.Utils.utils.PesoPicker
+    <com.oscar.pesowear.utils.utils.widgets.PesoPicker
         android:id="@+id/pesoPicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -1,4 +1,4 @@
-package com.oscar.pesowear.Utils.utils;
+package com.oscar.pesowear.utils.utils.widgets;
 
 import android.content.Context;
 import android.content.res.TypedArray;

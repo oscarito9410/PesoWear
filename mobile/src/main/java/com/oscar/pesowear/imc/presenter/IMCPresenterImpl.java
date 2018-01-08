@@ -1,5 +1,7 @@
 package com.oscar.pesowear.imc.presenter;
 
+import android.util.Log;
+
 import com.oscar.maincore.MVP.Presenter.BasePresenterImpl;
 import com.oscar.maincore.MVP.View.BaseView;
 import com.oscar.maincore.Utils.Constants;
@@ -7,21 +9,26 @@ import com.oscar.maincore.Utils.EstatusDescription;
 import com.oscar.maincore.Utils.FormulasUtils;
 import com.oscar.pesowear.ApplicationBase;
 import com.oscar.pesowear.imc.model.IMCResult;
+import com.oscar.pesowear.imc.view.IMCView;
 import com.oscar.pesowear.profile.model.Profile;
 import com.oscar.pesowear.record.model.Record;
 import com.oscar.pesowear.base.DataBaseInteractor;
+import com.oscar.pesowear.utils.di.SharedPreferencesModule;
 
 import java.text.SimpleDateFormat;
+
+import javax.inject.Inject;
 
 /**
  * Created by oemy9 on 19/12/2017.
  */
 
 public class IMCPresenterImpl  extends BasePresenterImpl implements  IMCPresenter{
-
+    private static final String TAG = "IMCPresenterImpl";
     private IMCView view;
     private DataBaseInteractor interactor;
     private SimpleDateFormat dt=new SimpleDateFormat(Constants.DATE_FORMAT_INICIO);
+
 
 
     @Override
@@ -47,7 +54,5 @@ public class IMCPresenterImpl  extends BasePresenterImpl implements  IMCPresente
        }
     }
 
-    public  interface  IMCView extends BaseView{
-            void onIMCResult(IMCResult result);
-    }
+
 }

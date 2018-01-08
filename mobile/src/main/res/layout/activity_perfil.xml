@@ -128,12 +128,12 @@
         app:ael_orientation="vertical"
         android:layout_below="@+id/faqEstatura">
 
-        <com.oscar.pesowear.Utils.utils.AlturaPicker
+        <com.oscar.pesowear.utils.utils.widgets.AlturaPicker
             android:id="@+id/alturaPicker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal">
-        </com.oscar.pesowear.Utils.utils.AlturaPicker>
+        </com.oscar.pesowear.utils.utils.widgets.AlturaPicker>
 
     </com.github.aakira.expandablelayout.ExpandableLinearLayout>
 
@@ -167,12 +167,12 @@
         app:ael_orientation="vertical"
         android:layout_below="@+id/faqActual">
 
-        <com.oscar.pesowear.Utils.utils.PesoPicker
+        <com.oscar.pesowear.utils.utils.widgets.PesoPicker
             android:id="@+id/pesoPickerActual"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"></com.oscar.pesowear.Utils.utils.PesoPicker>
+            android:layout_marginTop="20dp"></com.oscar.pesowear.utils.utils.widgets.PesoPicker>
     </com.github.aakira.expandablelayout.ExpandableLinearLayout>
 
     <LinearLayout
@@ -204,12 +204,12 @@
         app:ael_orientation="vertical"
         android:layout_below="@+id/faqObjetivo">
 
-        <com.oscar.pesowear.Utils.utils.PesoPicker
+        <com.oscar.pesowear.utils.utils.widgets.PesoPicker
             android:id="@+id/pesoPickerObjetivo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"></com.oscar.pesowear.Utils.utils.PesoPicker>
+            android:layout_marginTop="20dp"></com.oscar.pesowear.utils.utils.widgets.PesoPicker>
     </com.github.aakira.expandablelayout.ExpandableLinearLayout>
 
 </RelativeLayout>

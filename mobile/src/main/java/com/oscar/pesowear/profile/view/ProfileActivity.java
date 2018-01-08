@@ -17,9 +17,9 @@ import com.oscar.pesowear.profile.presenter.ProfilePresenter;
 import com.oscar.pesowear.profile.presenter.ProfilePresenterImpl;
 import com.oscar.pesowear.R;
 import com.oscar.pesowear.base.BaseWeareableActivity;
-import com.oscar.pesowear.Utils.utils.AlturaPicker;
-import com.oscar.pesowear.Utils.utils.ExpandableListenerCustom;
-import com.oscar.pesowear.Utils.utils.PesoPicker;
+import com.oscar.pesowear.utils.utils.widgets.AlturaPicker;
+import com.oscar.pesowear.utils.utils.widgets.ExpandableListenerCustom;
+import com.oscar.pesowear.utils.utils.widgets.PesoPicker;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

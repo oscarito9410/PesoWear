@@ -1,6 +1,7 @@
-package com.oscar.pesowear.imc.presenter;
+package com.oscar.pesowear.imc.view;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,9 +11,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.github.anastr.speedviewlib.SpeedView;
+import com.oscar.pesowear.imc.di.DaggerIMCComponent;
+import com.oscar.pesowear.imc.di.IMCModule;
 import com.oscar.pesowear.imc.model.IMCResult;
 import com.oscar.pesowear.R;
 import com.oscar.pesowear.base.FragmentBase;
+import com.oscar.pesowear.imc.presenter.IMCPresenter;
+import com.oscar.pesowear.imc.presenter.IMCPresenterImpl;
+import com.oscar.pesowear.utils.di.SharedPreferencesModule;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,9 +29,10 @@ import butterknife.ButterKnife;
  * Created by oemy9 on 19/12/2017.
  */
 
-public class FragmentIMC extends FragmentBase implements IMCPresenterImpl.IMCView {
+public class FragmentIMC extends FragmentBase implements IMCView {
     private View rootView;
-    private IMCPresenter presenter;
+    @Inject
+    IMCPresenter presenter;
 
     @BindView(R.id.speedView)
     SpeedView speedView;
@@ -43,10 +52,14 @@ public class FragmentIMC extends FragmentBase implements IMCPresenterImpl.IMCVie
     TextView tvUnidadObjetivo;
 
 
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView=inflater.inflate(R.layout.fragment_imc,container,false);
+        DaggerIMCComponent.builder()
+                .sharedPreferencesModule(new SharedPreferencesModule(getContext()))
+                .iMCModule(new IMCModule(this)).build().inject(this);
         return rootView;
     }
 
@@ -77,8 +90,6 @@ public class FragmentIMC extends FragmentBase implements IMCPresenterImpl.IMCVie
 
     @Override
     public void setPresenter() {
-        presenter=new IMCPresenterImpl();
-        presenter.register(this);
         presenter.obtenerIMC();
     }
 
